@@ -1,0 +1,86 @@
+
+<ion-header>
+  <ion-toolbar color="danger">
+    
+        <ion-title>Liste des Vannes</ion-title>
+      </ion-toolbar >
+      <ion-toolbar color="danger">
+        <ion-searchbar ></ion-searchbar>
+     
+    
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <div class="bg"></div>
+<div class="bg bg2"></div>
+<div class="bg bg3"></div>
+  <div class="ion-text-center ion-margin-top ion-margin-bottom">
+    <div class="orderSummary">
+   
+    </div>
+  </div>
+  <ion-card class="valve">
+    <h4 class="valvetitle" >Valve 1:</h4>
+    <ion-row class="ion-align-items-center">
+      <ion-col size="8" class="ion-padding">
+        <ion-row>
+          <ion-col class="bold">
+            <h5 class="ion-no-margin">
+              Etat:<ion-select placeholder="ON/OFF">
+                <ion-select-option value="ON">Ouvert</ion-select-option>
+                <ion-select-option value="OFF">Fermer</ion-select-option>
+               
+              </ion-select>
+              
+            </h5>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col class="address-text">
+           
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col class="bold">
+            <h5 class="ion-no-margin"> Temperature en amont:
+              <ion-label position="floating"></ion-label>
+              <ion-input placeholder="Enter text"></ion-input>
+
+              <h5 class="ion-no-margin"> Temperature en aval:
+                <ion-label position="floating"></ion-label>
+                <ion-input placeholder="Enter text"></ion-input>
+                </h5>
+            </h5>
+            <h5 class="ion-no-margin" > Temperature attendue en aval:
+              </h5>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col >
+            
+          </ion-col>
+        </ion-row>
+      </ion-col >
+      <ion-col size="8">
+        <ion-button (click)="presentAlert()">Valider</ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-card>
+
+
+  <data class="T"></data>
+  <data class="ID"></data>
+
+
+  <script type="text/javascript">
+    var counterValve = 0;
+    </script>
+
+  <ion-fab slot="fixed" horizontal="center" vertical="bottom">
+    <ion-tab-button shape="round" (click)=presentAlert2() value="1">
+      <ion-icon name="add"></ion-icon>
+    </ion-tab-button>
+  </ion-fab>
+  
+
+</ion-content>

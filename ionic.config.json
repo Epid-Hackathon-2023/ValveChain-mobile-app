@@ -1,0 +1,7 @@
+{
+  "name": "EDF_H",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}

@@ -10,7 +10,10 @@ log.txt
 *.sublime-project
 *.sublime-workspace
 npm-debug.log*
+*_bak
+*.bak_
 
+.angular/
 .idea/
 .sass-cache/
 .tmp/
@@ -31,3 +34,5 @@ $RECYCLE.BIN/
 .DS_Store
 Thumbs.db
 UserInterfaceState.xcuserstate
+commands.txt
+package-lock.json

@@ -26,8 +26,9 @@
     "@ionic/angular": "^6.1.9",
     "@ionic/cordova-builders": "^7.0.0",
     "@ionic/storage": "^3.0.6",
+    "bootstrap": "^5.2.3",
     "ionicons": "^6.0.3",
-    "rxjs": "~7.5.0",
+    "rxjs": "~6.6.7",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"
   },
@@ -59,7 +60,18 @@
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.0.0",
     "ts-node": "~8.3.0",
-    "typescript": "~4.8.4"
+    "typescript": "~4.8.4",
+    "uk.co.workingedge.cordova.plugin.sqliteporter": "^1.1.1"
   },
-  "description": "An Ionic project"
+  "description": "An Ionic project",
+  "cordova": {
+    "plugins": {
+      "uk.co.workingedge.cordova.plugin.sqliteporter": {},
+      "cordova-sqlite-storage": {}
+    }
+  },
+  "styles": {
+    "node_modules/bootstrap/dist/css/bootstrap.min.css": {},
+    "src/styles.css": {}
+  }
 }

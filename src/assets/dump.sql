@@ -1,6 +1,6 @@
-CREATE TABLE IF NOT EXISTS songtable(
+CREATE TABLE IF NOT EXISTS valvetable(
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     artist_name TEXT, 
-    song_name TEXT
+    valve_name TEXT
 );
-INSERT or IGNORE INTO songtable(id, artist_name, song_name) VALUES (1, 'Kevin', '1234');
+INSERT or IGNORE INTO valvetable(id, artist_name, valve_name) VALUES (1, 'MonsieurValve', '1234');

@@ -9,7 +9,7 @@
     "noImplicitOverride": true,
     "noPropertyAccessFromIndexSignature": true,
     "strictNullChecks": false,
-	"noImplicitAny": true,
+	"noImplicitAny": false,
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
     "sourceMap": true,
@@ -28,7 +28,7 @@
   },
   "angularCompilerOptions": {
 	"strictNullChecks": false,
-	"noImplicitAny": true,
+	"noImplicitAny": false,
     "enableI18nLegacyMessageIdFormat": false,
     "strictInjectionParameters": true,
     "strictInputAccessModifiers": true,

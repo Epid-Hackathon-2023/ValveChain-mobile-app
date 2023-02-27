@@ -25,7 +25,7 @@ export class Tab2Page {
     const alert = await this.alertController.create({
       header: 'Sauvegarde de la Valve',
       subHeader: '',
-      message: 'votre Valve a bien ete sauvegarder',
+      message: 'Votre valve a bien été sauvegardée',
       buttons: ['OK'],
     });
 

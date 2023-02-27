@@ -20,7 +20,7 @@ export class DbService {
   ) {
     this.platform.ready().then(() => {
       this.sqlite.create({
-        name: 'positronx_db.db',
+        name: 'valve.db',
         location: 'default'
       })
       .then((db: SQLiteObject) => {

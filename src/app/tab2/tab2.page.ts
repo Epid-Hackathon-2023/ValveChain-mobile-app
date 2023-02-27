@@ -34,12 +34,12 @@ export class Tab2Page {
 
   async presentAlert2() {
     const alert = await this.alertController.create({
-      header: 'Ajouter une Vanne',
+      header: 'Ajouter une vanne',
       cssClass: 'custom-alert',
       inputs: [
         {
-          name: 'Nom de la Vanne',
-          placeholder: 'Nom de la Vanne',
+          name: 'Nom de la vanne',
+          placeholder: 'Nom de la vanne',
           
         },
         {
@@ -48,8 +48,8 @@ export class Tab2Page {
           
         },
         {
-          name: 'Temperature attendue en aval',
-          placeholder: 'Temperature attendue en aval',
+          name: 'Température attendue en aval',
+          placeholder: 'Température attendue en aval',
           
         },
       ],

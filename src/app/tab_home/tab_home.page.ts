@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { AlertController } from '@ionic/angular';
+import { DbService } from '../services/db.service';
 
 @Component({
   selector: 'app-tab_home',
@@ -7,11 +9,18 @@ import { Component } from '@angular/core';
 })
 export class TabHomePage {
 
-  Name:string;
-  Password:string;
+  constructor(private alertController: AlertController, private db: DbService) { }
 
-  test:string = "Password";
+  async presentAlert() {
+    const alert = await this.alertController.create({
+      header: 'Envoie des données',
+      subHeader: '',
+      message: '',
+      buttons: ['OK'],
+    });
 
-  constructor() {}
+    await alert.present();
+  }
+
 
 }

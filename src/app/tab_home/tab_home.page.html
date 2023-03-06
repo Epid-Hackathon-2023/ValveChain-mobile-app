@@ -1,25 +1,40 @@
 <ion-content>
-    <div class="padding">
+<div class="bg"></div>
+<div class="bg bg2"></div>
+<div class="bg bg3"></div>
 
+<div class="loginm">
+    <div id="body">
+        <div id="body">
+            <div class="incription">
 
-
-        <div class="logo">
-            <ion-icon name="people-circle-outline" color="light"></ion-icon>
-        </div>
-
-        <ion-item counter="true">
-            <ion-label color="light" position="floating">Name :</ion-label>
-            <ion-input color="light" placeholder="Name" type="text" maxlength="20"></ion-input>
-          </ion-item>
+            </div>
+            <!--<img class="img" src="./assets/vannes.jpeg">-->
           
-          <ion-item counter="true" >
-            <ion-label color="light" position="floating">Mot de passe :</ion-label>
-            <ion-input color="light" placeholder="MDP" type="password" maxlength="20"></ion-input>
-          </ion-item>
-
-
-
-<ion-button shape="round" expand="block">Connexion</ion-button>
+               <ion-tab-button tab="tab_fill">
+               <input class="button_v" type="submit" name="valide" value="Renseigner vannes">
+               </ion-tab-button>
+           
         </div>
+    </div>
+</div>
+
+<div class="loginm">
+    <div id="body">
+        <div id="body">
+            <div class="incription">
+
+            </div>
+            <!--<img class="img" src="./assets/vannes.jpeg">-->
+          
+               <ion-tab-button tab="tab_home">
+               <input (click)="presentAlert()" class="button_v" type="submit" name="valide" value="Envoyer les données">
+               </ion-tab-button>
+               
+        </div>
+    </div>
+</div>
+
+
 
 </ion-content>

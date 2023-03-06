@@ -1,0 +1,37 @@
+
+
+ion-content{
+  --ion-background-color:linear-gradient(#009FFF,#ec2f4b)
+}
+
+ion-item{
+  --ion-background-color:transparent!important;
+}
+
+ion-button{
+  height: 80px;
+}
+
+.padding {
+  padding: 5%;
+  top:50%;
+}
+
+.flex {
+  display:flex;
+}
+
+.logo{
+  height: 250px;
+  position: relative;
+}
+
+.logo ion-icon{
+  position: absolute;
+  font-size: 9cm;
+  top :50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+
+}
+

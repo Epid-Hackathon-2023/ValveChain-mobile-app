@@ -1,109 +1,37 @@
-html {
-  height:100%;
+
+
+ion-content{
+  --ion-background-color:linear-gradient(#009FFF,#ec2f4b)
 }
 
-body {
-  margin:0;
+ion-item{
+  --ion-background-color:transparent!important;
 }
 
-.bg {
-  animation:slide 3s ease-in-out infinite alternate;
-  background-image: linear-gradient(-60deg, rgb(8, 13, 171) 35%, rgb(177, 10, 10) 50%);
-  bottom:0;
-  left:-50%;
-  opacity:.5;
-  position:fixed;
-  right:-50%;
-  top:0;
-  z-index:-1;
+ion-button{
+  height: 80px;
 }
 
-.bg2 {
-  animation-direction:alternate-reverse;
-  animation-duration:4s;
-}
-
-.bg3 {
-  animation-duration:5s;
-}
-
-.content {
-  background-color:rgba(255,255,255,.8);
-  border-radius:.25em;
-  box-shadow:0 0 .25em rgba(0,0,0,.25);
-  box-sizing:border-box;
-  left:50%;
-  padding:10vmin;
-  position:fixed;
-  text-align:center;
+.padding {
+  padding: 5%;
   top:50%;
-  transform:translate(-50%, -50%);
 }
 
-h1 {
-  font-family:monospace;
+.flex {
+  display:flex;
 }
 
-@keyframes slide {
-  0% {
-    transform:translateX(-25%);
-  }
-  100% {
-    transform:translateX(25%);
-  }
-}
-label {
-  cursor: default;
+.logo{
+  height: 250px;
+  position: relative;
 }
 
-.loginm {
-    margin: 0%;
-    padding: 32px 16px;
-    border: 1px solid #D0D0D0;
-    box-shadow: 0 0 8px #D0D0D0;
-    background-image: linear-gradient(-60deg, rgb(174, 168, 168) 35%, rgb(210, 210, 210) 50%);
-    position: absolute;
-    top: 50%; left: 50%;
-    transform: translate(-50%,-50%);
+.logo ion-icon{
+  position: absolute;
+  font-size: 9cm;
+  top :50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
 
 }
-.incription{
-  margin: 20px;
-}
 
-.label_nom{
-  height: 200px;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  padding: 0px;
-  gap: 64px;
-  width: 40%;
-  height: 30%;
-  flex: none;
-  order: 0;
-  align-self: stretch;
-  color: black;
-}
-.button_v{
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  width: 80%;
-  height: 50%;
-  background: #535353;
-  flex: none;
-  order: 0;
-  align-self: stretch;
-  flex-grow: 0;
-  border-radius: 10px;
-  color: #FFFFFF;
-  font-family: 'Public Sans';
-  font-size: 16px;
-  font-weight: 500;
-  font-style: normal;
-  line-height: 24px;
-  margin: 30px;
-
-}

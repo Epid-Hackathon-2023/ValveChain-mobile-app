@@ -1,33 +1,25 @@
 <ion-content>
-<div class="bg"></div>
-<div class="bg bg2"></div>
-<div class="bg bg3"></div>
+    <div class="padding">
 
 
-<div class="loginm">
-    <h1>Bienvenue</h1>
-    <div id="body">
-        <div id="body">
-            <form tab="tab2" action="/tabs/tab1" method="get">
-                <div class="incription">
-                    <label class="label_nom" for="nom">Nom :</label>
-                   <input [(ngModel)]="Name" type="text" id="Nom" name="Nom">
-                </div>
-                <div class="incription">
-                    <label  class="label_nom" for="nom">Password :</label>
-                   <input [(ngModel)]="Password" type="password" id="password" name="password">
-               </div>
 
-               <p>Données : {{Password}}</p>
-               
-               
-               <ion-tab-button tab="tab4">
-               <input class="button_v" type="submit" name="valide" value="Log In">
-               </ion-tab-button>
-           </form>
+        <div class="logo">
+            <ion-icon name="people-circle-outline" color="light"></ion-icon>
         </div>
-    </div>
-</div>
 
- 
+        <ion-item counter="true">
+            <ion-label color="light" position="floating">Name :</ion-label>
+            <ion-input color="light" placeholder="Name" type="text" maxlength="20"></ion-input>
+          </ion-item>
+          
+          <ion-item counter="true" >
+            <ion-label color="light" position="floating">Mot de passe :</ion-label>
+            <ion-input color="light" placeholder="MDP" type="password" maxlength="20"></ion-input>
+          </ion-item>
+
+
+
+<ion-button shape="round" expand="block">Connexion</ion-button>
+        </div>
+
 </ion-content>

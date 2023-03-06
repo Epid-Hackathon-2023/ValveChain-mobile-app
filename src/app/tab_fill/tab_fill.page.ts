@@ -5,13 +5,13 @@ var inc=0;
 
 
 @Component({
-  selector: 'app-tab2',
-  templateUrl: 'tab2.page.html',
-  styleUrls: ['tab2.page.scss']
+  selector: 'app-tab_fill',
+  templateUrl: 'tab_fill.page.html',
+  styleUrls: ['tab_fill.page.scss']
 })
 
 
-export class Tab2Page {
+export class TabFillPage {
 
   
 

@@ -5,11 +5,45 @@
         <ion-title>Liste des vannes</ion-title>
       </ion-toolbar >
       <ion-toolbar color="danger">
-        <ion-searchbar ></ion-searchbar>
-     
+
+        <ion-buttons slot="start">
+          <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+        <ion-title>Menu</ion-title>
     
   </ion-toolbar>
 </ion-header>
+
+
+  <ion-menu contentId="main-content">
+    <ion-header>
+      <ion-toolbar color="tertiary">
+        <ion-title>Menu</ion-title>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content class="ion-padding">
+
+
+      <ion-button>Parametre</ion-button>
+
+      <ion-button>Exit</ion-button>
+    </ion-content>
+  </ion-menu>
+  <div class="ion-page" id="main-content">
+    
+    <ion-content class="ion-padding">
+      Tap the button in the toolbar to open the menu.
+    </ion-content>
+  </div>
+
+
+
+
+
+
+
+
+
 <ion-content>
   <div class="bg"></div>
 <div class="bg bg2"></div>
@@ -25,15 +59,22 @@
 
 
   <ion-card class="valve">
-    <h4 class="valvetitle" >Vanne 1:</h4>
+    <h4 class="valvetitle" ><h5 class="ion-no-margin">
+      <ion-item color="ligh">
+        Date de la mesure : 
+        <ion-input [(ngModel)]="DATE" type="date"></ion-input>
+      <ion-label position="floating">Numero de la Vanne</ion-label>
+      <ion-input type="number" [(ngModel)]="N" placeholder=""></ion-input>
+    </ion-item>
+    </h5></h4>
     <ion-row class="ion-align-items-center">
       <ion-col size="8" class="ion-padding">
         <ion-row>
           <ion-col class="bold">
             <h5 class="ion-no-margin">
-              État:<ion-button fill="clear" shape="round" (click)=presentAlert() color="dark"><ion-icon name="help-outline"></ion-icon></ion-button><ion-select placeholder="ON/OFF">
-                <ion-select-option value="ON">Ouvert</ion-select-option>
-                <ion-select-option value="OFF">Fermé</ion-select-option>
+              État:<ion-button fill="clear" shape="round" (click)=presentAlert() color="dark"><ion-icon name="help-outline"></ion-icon></ion-button><ion-select placeholder="ON/OFF" [(ngModel)]="ETAT">
+                <ion-select-option  value="ON">Ouvert</ion-select-option>
+                <ion-select-option  value="OFF">Fermé</ion-select-option>
                
               </ion-select>
               
@@ -48,12 +89,12 @@
         <ion-row>
           <ion-col class="bold">
             <h5 class="ion-no-margin"> Température en amont:<ion-button fill="clear" shape="round" (click)=presentAlert2() color="dark"><ion-icon name="help-outline"></ion-icon></ion-button>
-              <ion-label position="floating"></ion-label>
-              <ion-input placeholder="Enter text"></ion-input>
+              <ion-label  position="floating"></ion-label>
+              <ion-input type="number" [(ngModel)]="TAM" placeholder="Temperature en C°"></ion-input>
 
               <h5 class="ion-no-margin"> Température en aval:<ion-button fill="clear" shape="round" (click)=presentAlert3() color="dark"><ion-icon name="help-outline"></ion-icon></ion-button>
                 <ion-label position="floating"></ion-label>
-                <ion-input placeholder="Enter text"></ion-input>
+                <ion-input type="number" [(ngModel)]="TAV" placeholder="Temperature en C°"></ion-input>
                 </h5>
             </h5>
             <h5 class="ion-no-margin" > Température attendue (en aval):
@@ -62,30 +103,23 @@
         </ion-row>
         <ion-row>
           <ion-col >
-            
           </ion-col>
         </ion-row>
       </ion-col >
       <ion-col size="8">
-        <ion-button >Valider</ion-button>
+        <ion-button (click)=onclick() >Valider</ion-button>
       </ion-col>
     </ion-row>
   </ion-card>
 
   
 
-
-
-  <ion-fab slot="fixed" horizontal="center" vertical="bottom">
-    <ion-tab-button shape="round" (click)=onclick() value="1">
-      <ion-icon name="add"></ion-icon>
-    </ion-tab-button>
-  </ion-fab>
-
 <ion-card class="title">
   <h4 class="valvetitle" >Vanne Sauvegarder:</h4>
 </ion-card>
 
+
+<ion-card>
 
   <ion-list *ngFor="let item of listItems">
     <ion-item href detail>
@@ -93,12 +127,20 @@
         <ion-img src="{{item.imageURL}}"></ion-img>
       </ion-thumbnail>
       <ion-label class="ion-text-wrap">{{ item.name }}</ion-label>
+      
       <ion-label>{{ item.etat }}</ion-label>
-      temp amont:{{ item.temA }} temp aval:{{ item.temB }}
+      <ion-label>{{ item.date }}</ion-label>
+       amont:
+       <ion-label>{{ item.temA }}</ion-label>
+       aval:
+       <ion-label>{{ item.temB }}</ion-label>
+       
+      
+      
     </ion-item>
   </ion-list>
+</ion-card>
 
-  <div #container></div>
-  
+
 
 </ion-content>

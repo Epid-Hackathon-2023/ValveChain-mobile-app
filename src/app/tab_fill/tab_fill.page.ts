@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
+import { NavController} from '@ionic/angular';
+import { Component,ViewChild,ViewContainerRef,ComponentFactoryResolver } from '@angular/core';
 import { AlertController } from '@ionic/angular';
+
 var inc=0;
 
 
@@ -7,25 +9,29 @@ var inc=0;
 @Component({
   selector: 'app-tab_fill',
   templateUrl: 'tab_fill.page.html',
-  styleUrls: ['tab_fill.page.scss']
+  styleUrls: ['tab_fill.page.scss'],
 })
 
 
 export class TabFillPage {
-
-  
-
- incrementIndex(){
-   inc = inc + 1 ;
-}
-
-  constructor(private alertController: AlertController) {
+  public listItems:any;
+ 
+  constructor(private alertController: AlertController,public navCtrl: NavController, resolver:ComponentFactoryResolver){
+    this.listItems=[{
+      name: "NAME", etat:"ETAT",temA:"...",tempB:"...", imageURL: "./assets/image_01.png" 
+    }];
   }
+
+  public onclick():void{
+    this.listItems.push({
+      name: "Valve 1", etat: "ON",temA:"0.1", temB:"0.2",imageURL: "./assets/image_01.png"
+    });
+  };
+
   async presentAlert() {
     const alert = await this.alertController.create({
-      header: 'Sauvegarde de la Valve',
-      subHeader: '',
-      message: 'Votre valve a bien été sauvegardée',
+      header: "Comment connaitre l'etat de la vanne",
+      message: 'bla bla bla',
       buttons: ['OK'],
     });
 
@@ -34,44 +40,21 @@ export class TabFillPage {
 
   async presentAlert2() {
     const alert = await this.alertController.create({
-      header: 'Ajouter une vanne',
-      cssClass: 'custom-alert',
-      inputs: [
-        {
-          name: 'Nom de la vanne',
-          placeholder: 'Nom de la vanne',
-          
-        },
-        {
-          name: 'ID',
-          placeholder: 'ID',
-          
-        },
-        {
-          name: 'Température attendue en aval',
-          placeholder: 'Température attendue en aval',
-          
-        },
-      ],
-      buttons: [
-        {
-          text: 'No',
-          cssClass: 'alert-button-cancel',
-        },
-        {
-          text: 'Yes',
-          handler: (data: any) => {
-            console.log('Saved Information', data);
-          }
-        },
-      ],
+      header: 'Comment prendre la temperature en amont:',
+      message: 'bla bla bla',
+      buttons: ['OK'],
     });
-
     await alert.present();
-  }
-
-  
 
 }
+async presentAlert3() {
+  const alert = await this.alertController.create({
+    header: 'Comment prendre la temperature en aval:',
+    message: 'bla bla bla',
+    buttons: ['OK'],
+  });
+  await alert.present();
 
+}
+}
 

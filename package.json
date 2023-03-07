@@ -28,6 +28,7 @@
     "@ionic/storage": "^3.0.6",
     "bootstrap": "^5.2.3",
     "ionicons": "^6.0.3",
+    "ng-sidebar":"^9.2.0",
     "rxjs": "~6.6.7",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"

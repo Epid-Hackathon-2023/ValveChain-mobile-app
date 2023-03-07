@@ -4,6 +4,23 @@ ion-select {
     width: 100%;
     justify-content: center;
   }
+
+  .help{
+    --ion-background-color:transparent!important;
+  }
+
+  .title{
+    background-color: #71b1d3;
+  }
+
+  .ion-margin-end{
+    background-color: #816d6d;
+  }
+
+  ion-list{
+    padding: 5%;
+    top:50%;
+  }
   
   ion-select::part(placeholder),
   ion-select::part(text) {

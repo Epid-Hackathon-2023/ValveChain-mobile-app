@@ -1,25 +1,25 @@
 <ion-content>
     <div class="padding">
 
-
-
         <div class="logo">
             <ion-icon name="people-circle-outline" color="light"></ion-icon>
         </div>
 
+        <!--User box-->
         <ion-item counter="true">
-            <ion-label color="white" position="floating">Nom</ion-label>
-            <ion-input color="black" placeholder="Entrez le nom d'utilisateur" type="text" maxlength="20"></ion-input>
-          </ion-item>
-          
-          <ion-item counter="true" >
-            <ion-label color="white" position="floating">Mot de passe:</ion-label>
-            <ion-input color="black" placeholder="Entrez le mot de passe" type="password" maxlength="20"></ion-input>
-          </ion-item>
+          <ion-label color="white" position="floating">Nom</ion-label>
+          <ion-input color="black" placeholder="Entrez le nom d'utilisateur" formControlName="user" type="text" maxlength="20"></ion-input>
+        </ion-item>
 
+        <!--Password box-->
+        <ion-item counter="true" >
+          <ion-label color="white" position="floating">Mot de passe</ion-label>
+          <ion-input color="black" placeholder="Entrez le mot de passe" formControlName="pass" type="password" maxlength="20"></ion-input>
+        </ion-item>
 
-
-<ion-button shape="round" expand="block">Connexion</ion-button>
-        </div>
+        <!--Login button-->
+        <ion-button shape="round" expand="block">Connexion</ion-button>
+        
+    </div>
 
 </ion-content>

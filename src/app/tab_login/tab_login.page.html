@@ -1,25 +1,33 @@
 <ion-content>
     <div class="padding">
 
-
-
         <div class="logo">
             <ion-icon name="people-circle-outline" color="light"></ion-icon>
         </div>
 
-        <ion-item counter="true">
+        <form [formGroup]="loginForm" (ngSubmit)="submitForm()" novalidate>
+
+          <!--User box-->
+          <ion-item counter="true">
             <ion-label color="white" position="floating">Nom</ion-label>
-            <ion-input color="black" placeholder="Entrez le nom d'utilisateur" type="text" maxlength="20"></ion-input>
+            <ion-input color="black" placeholder="Entrez le nom d'utilisateur" formControlName="user" required type="text" maxlength="20"></ion-input>
           </ion-item>
-          
+          <span class="error ion-padding" *ngIf="isSubmitted && errorControl.name.errors?.required">Nom obligatoire.</span>
+          <span class="error ion-padding" *ngIf="isSubmitted && errorControl.name.errors?.minlength">Veuillez entrer un nom de 2 caractères minimum.</span>
+
+          <!--Password box-->
           <ion-item counter="true" >
-            <ion-label color="white" position="floating">Mot de passe:</ion-label>
-            <ion-input color="black" placeholder="Entrez le mot de passe" type="password" maxlength="20"></ion-input>
+            <ion-label color="white" position="floating">Mot de passe</ion-label>
+            <ion-input color="black" placeholder="Entrez le mot de passe" formControlName="pass" requiered type="password" maxlength="20"></ion-input>
           </ion-item>
+          <span class="error ion-padding" *ngIf="isSubmitted && errorControl.mobile.errors?.required">Mot de passe obligatoire.</span>
+          <span class="error ion-padding" *ngIf="isSubmitted && errorControl.mobile.errors?.pattern">???</span>
 
+          <!--Login button-->
+          <ion-button shape="round" expand="block">Connexion</ion-button>
 
-
-<ion-button shape="round" expand="block">Connexion</ion-button>
-        </div>
+        </form>
+        
+    </div>
 
 </ion-content>

@@ -1,10 +1,11 @@
 
+
 <ion-header>
-  <ion-toolbar color="danger">
+  <ion-toolbar color="tertiary" >
     
-        <ion-title>Liste des vannes</ion-title>
+        <ion-title>Liste des vannes, Tranche {{tournee_rendement.tranche}}</ion-title>
       </ion-toolbar >
-      <ion-toolbar color="danger">
+      <ion-toolbar color="tertiary" >
 
         <ion-buttons slot="start">
           <ion-menu-button></ion-menu-button>
@@ -40,19 +41,21 @@
 
 
 
-
-
+  
 
 
 <ion-content>
   <div class="bg"></div>
-<div class="bg bg2"></div>
-<div class="bg bg3"></div>
+
   <div class="ion-text-center ion-margin-top ion-margin-bottom">
+    
+    
     <div class="orderSummary">
    
     </div>
   </div>
+
+  <ion-card class="back">
   <ion-card class="title">
     <h4 class="valvetitle" >Ajouter Information vanne:</h4>
   </ion-card>
@@ -61,7 +64,7 @@
   <ion-card class="valve">
     <h4 class="valvetitle" ><h5 class="ion-no-margin">
       <ion-item color="ligh">
-        Date de la mesure : 
+        Date de la mesure :
         <ion-input [(ngModel)]="DATE" type="date"></ion-input>
       <ion-label position="floating">Numero de la Vanne</ion-label>
       <ion-input type="number" [(ngModel)]="N" placeholder=""></ion-input>
@@ -102,7 +105,7 @@
           </ion-col>
         </ion-row>
         <ion-row>
-          <ion-col >
+          <ion-col>
           </ion-col>
         </ion-row>
       </ion-col >
@@ -119,17 +122,17 @@
 </ion-card>
 
 
-<ion-card>
+<ion-card class="list">
 
-  <ion-list *ngFor="let item of listItems">
-    <ion-item href detail>
+  <ion-list class="colorlist" >
+    <ion-item class="colorlist2" *ngFor="let item of listItems">
       <ion-thumbnail class="ion-margin-end">
-        <ion-img src="{{item.imageURL}}"></ion-img>
+      <ion-img src="{{item.imageURL}}"></ion-img>
       </ion-thumbnail>
       <ion-label class="ion-text-wrap">{{ item.name }}</ion-label>
       
       <ion-label>{{ item.etat }}</ion-label>
-      <ion-label>{{ item.date }}</ion-label>
+      <ion-label>{{tournee_rendement.date_debut }} {{tournee_rendement.date_fin }}</ion-label>
        amont:
        <ion-label>{{ item.temA }}</ion-label>
        aval:
@@ -141,6 +144,9 @@
   </ion-list>
 </ion-card>
 
+</ion-card>
 
+
+{{temperature_relevee1.amont}}
 
 </ion-content>

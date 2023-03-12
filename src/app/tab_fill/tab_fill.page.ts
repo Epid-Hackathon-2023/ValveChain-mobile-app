@@ -3,6 +3,8 @@ import { Component,OnInit ,ViewChild,ViewContainerRef,ComponentFactoryResolver }
 import { AlertController} from '@ionic/angular';
 
 
+import { environment } from '../../environments/environment';
+
 
 
 
@@ -18,12 +20,32 @@ import { AlertController} from '@ionic/angular';
 
 export class TabFillPage {
   public listItems:any;
-  public valve:any
-  public ETAT;
-  public TAM;
-  public TAV;
-  public N;
-  public DATE;
+  public valve:any;
+  public ETAT:any;
+  public TAM:any;
+  public TAV:any;
+  public N:any;
+  public DATE:any;
+
+ 
+
+  public  tournee_rendement  =  environment.tournee_rendement;
+  public  annexes  =  environment.annexes;
+  public  1  =  environment.annexes[1];
+  public  groupes_vannes  =  environment.annexes[1].groupes_vannes[0];
+  public  groupes_vannes1  =  environment.annexes[1].groupes_vannes[1];
+  public vannes1 = environment.annexes[1].groupes_vannes[0].vannes[0];
+  public temperature_relevee1 = environment.annexes[1].groupes_vannes[0].vannes[0].temperature_relevee;
+
+  public vannes2 = environment.annexes[1].groupes_vannes[0].vannes[1];
+  public temperature_relevee2 = environment.annexes[1].groupes_vannes[0].vannes[1].temperature_relevee;
+
+  public vannes3 = environment.annexes[1].groupes_vannes[0].vannes[2];
+  public temperature_relevee3 = environment.annexes[1].groupes_vannes[0].vannes[2].temperature_relevee;
+
+  public vannes4 = environment.annexes[1].groupes_vannes[0].vannes[3];
+  public temperature_relevee4 = environment.annexes[1].groupes_vannes[0].vannes[3].temperature_relevee;
+
 
 
  
@@ -34,11 +56,24 @@ export class TabFillPage {
     }];
   }
 
-  public onclick():void{
+  async onclick(){
+
+    const alert = await this.alertController.create({
+      header: "Tout les champs doivent etre remplis pour validée la vanne",
+      buttons: ['OK'],
+    });
+
+    if(this.N == null && this.DATE == null && this.ETAT == null && this.TAM == null && this.TAV == null){
+      console.log('is empty'); 
+      await alert.present();
+    }else{
     this.listItems.push({
      date:this.DATE, name: this.N , etat: this.ETAT,temA:this.TAM, temB:this.TAV,imageURL: "./assets/image_01.png"
     });
+  }
   };
+
+  
 
   async presentAlert() {
     const alert = await this.alertController.create({

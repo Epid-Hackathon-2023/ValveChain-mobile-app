@@ -1,33 +1,33 @@
 <ion-content>
-    <div class="padding">
+  <div class="padding">
 
-        <div class="logo">
-            <ion-icon name="people-circle-outline" color="light"></ion-icon>
-        </div>
+      <div class="logo">
+          <ion-icon name="people-circle-outline" color="light"></ion-icon>
+      </div>
 
-        <form [formGroup]="loginForm" (ngSubmit)="submitForm()" novalidate>
+      <form [formGroup]="loginForm" (ngSubmit)="OnSubmit()" novalidate>
 
-          <!--User box-->
-          <ion-item counter="true">
-            <ion-label color="white" position="floating">Nom</ion-label>
-            <ion-input color="black" placeholder="Entrez le nom d'utilisateur" formControlName="user" required type="text" maxlength="20"></ion-input>
-          </ion-item>
-          <span class="error ion-padding" *ngIf="isSubmitted && errorControl.name.errors?.required">Nom obligatoire.</span>
-          <span class="error ion-padding" *ngIf="isSubmitted && errorControl.name.errors?.minlength">Veuillez entrer un nom de 2 caractères minimum.</span>
+        <!--User box-->
+        <ion-item counter="true">
+          <ion-label color="white" position="floating">Nom</ion-label>
+          <ion-input color="black" placeholder="Entrez le nom d'utilisateur" formControlName="user" required type="text" maxlength="26"></ion-input>
+        </ion-item>
+        <span class="error ion-padding" *ngIf="isSubmitted && errorControl.name.errors?.required">Nom obligatoire.</span>
+        <span class="error ion-padding" *ngIf="isSubmitted && errorControl.name.errors?.minlength">Veuillez entrer un nom de 2 caractères minimum.</span>
 
-          <!--Password box-->
-          <ion-item counter="true" >
-            <ion-label color="white" position="floating">Mot de passe</ion-label>
-            <ion-input color="black" placeholder="Entrez le mot de passe" formControlName="pass" requiered type="password" maxlength="20"></ion-input>
-          </ion-item>
-          <span class="error ion-padding" *ngIf="isSubmitted && errorControl.mobile.errors?.required">Mot de passe obligatoire.</span>
-          <span class="error ion-padding" *ngIf="isSubmitted && errorControl.mobile.errors?.pattern">???</span>
+        <!--Password box-->
+        <ion-item counter="true" >
+          <ion-label color="white" position="floating">Mot de passe</ion-label>
+          <ion-input color="black" placeholder="Entrez le mot de passe" formControlName="pass" requiered type="password" maxlength="20"></ion-input>
+        </ion-item>
+        <span class="error ion-padding" *ngIf="isSubmitted && errorControl.mobile.errors?.required">Mot de passe obligatoire.</span>
+        <span class="error ion-padding" *ngIf="isSubmitted && errorControl.mobile.errors?.pattern">Veuillez entrer au moins 1 minuscule, 1 MAJUSCULE, 1 chiffre (123...)</span>
 
-          <!--Login button-->
-          <ion-button shape="round" expand="block">Connexion</ion-button>
+        <!--Login button-->
+        <ion-button type="submit" shape="round" expand="block">Connexion</ion-button>
 
-        </form>
-        
-    </div>
+      </form>
+      
+  </div>
 
 </ion-content>

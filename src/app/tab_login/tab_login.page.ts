@@ -6,7 +6,7 @@ import { FormGroup, FormBuilder, Validators } from "@angular/forms";
   templateUrl: 'tab_login.page.html',
   styleUrls: ['tab_login.page.scss']
 })
-export class TabLoginPage {
+export class TabLoginPage implements OnInit {
 
   Name:string;
   Password:string;
@@ -18,9 +18,9 @@ export class TabLoginPage {
 
   ngOnInit() {
     this.loginForm = this.formBuilder.group({
-      user: ['', [Validators.required, Validators.minLength(2)]],
-      pass: ['', [Validators.required, Validators.pattern('[a-z0-9._%+-]')]]
-    })
+      user: this.formBuilder.control('', [Validators.required, Validators.minLength(2), Validators.maxLength(26)]),
+      pass: this.formBuilder.control('', [Validators.required, Validators.minLength(6), Validators.pattern('^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{6,20}$')]),
+    });
   }
 
   get errorControl() {
@@ -28,13 +28,27 @@ export class TabLoginPage {
   }
 
   //Déclenche le formuaire lorsque "Connexion" appuyé
-  submitForm() {
+//submitForm() {
+  OnSubmit() {
     this.isSubmitted = true;
     if (!this.loginForm.valid) {
       console.log('Veuillez remplire tous les champs.')
+      this.isSubmitted = false;
       return false;
-    } else {
+    }
+    
+    else {
       console.log(this.loginForm.value)
+
+      if (this.loginForm.value.user == 'ok' && this.loginForm.value.pass == 'okOK99') {
+        console.log('Good password !')
+      }
+
+      else {
+        console.log('Bad password...')
+        this.isSubmitted = false;
+      }
+
       return true;
     }
   }

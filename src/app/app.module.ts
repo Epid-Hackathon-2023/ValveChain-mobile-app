@@ -6,6 +6,7 @@ import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
+import { AuthGuard } from './auth.guard';
 
 import { PDFGenerator } from '@ionic-native/pdf-generator/ngx';
 import { InvoiceComponent } from './components/invoice/invoice.component';
@@ -17,7 +18,7 @@ import { SQLitePorter } from '@ionic-native/sqlite-porter/ngx';
 @NgModule({
   declarations: [AppComponent, InvoiceComponent],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule,HttpClientModule],
-  providers: [SQLite,SQLitePorter,PDFGenerator, { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
+  providers: [SQLite,SQLitePorter,PDFGenerator, { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }, AuthGuard],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

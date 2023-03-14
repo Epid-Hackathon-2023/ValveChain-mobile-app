@@ -1,5 +1,5 @@
 export const environment = {
-  production: false,
+    production: false,    
     tournee_rendement: {
       id: 1,
       nom_technicien: "John Doe",
@@ -65,7 +65,8 @@ export const environment = {
             localisation_groupe: "refroidisseurs de purge ABP 001-002 RP. (M2 G17)"
           }
         ]
-      }
+      },
+      
     }
 };
 

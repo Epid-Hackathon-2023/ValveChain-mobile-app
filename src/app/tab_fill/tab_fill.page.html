@@ -3,7 +3,7 @@
 <ion-header>
   <ion-toolbar color="tertiary" >
     
-        <ion-title>Liste des vannes, Tranche {{tournee_rendement.tranche}}</ion-title>
+        <ion-title>Liste des vannes, Tranche </ion-title>
       </ion-toolbar >
       <ion-toolbar color="tertiary" >
 
@@ -17,23 +17,45 @@
 
 
   <ion-menu contentId="main-content">
-    <ion-header>
-      <ion-toolbar color="tertiary">
-        <ion-title>Menu</ion-title>
-      </ion-toolbar>
-    </ion-header>
-    <ion-content class="ion-padding">
+
+    <ion-content>
+<div class="menu1">
+  <div class="menu-header-bg">
+  <div class="header-content">
+   <div class="logo">
+    <ion-icon color="light" name="person-circle-outline"></ion-icon>
+    
+    <ion-label>
+      <h2></h2>
+      <p></p>
+
+    </ion-label>
+  </div>
+</div>
+</div> 
 
 
-      <ion-button>Parametre</ion-button>
+      <div >
+        <ion-icon  color="light" name="settings-outline"></ion-icon>
+      </div>
 
-      <ion-button>Exit</ion-button>
+
+
+      <ion-button shape="round">Parametre</ion-button>
+
+      <ion-button shape="round">Voir Vanne</ion-button>
+      <div class="vide">
+
+      </div>
+
+      <ion-button shape="round" color="danger">Retour au login</ion-button>
+    </div>
     </ion-content>
   </ion-menu>
   <div class="ion-page" id="main-content">
     
     <ion-content class="ion-padding">
-      Tap the button in the toolbar to open the menu.
+    
     </ion-content>
   </div>
 
@@ -65,9 +87,22 @@
     <h4 class="valvetitle" ><h5 class="ion-no-margin">
       <ion-item color="ligh">
         Date de la mesure :
-        <ion-input [(ngModel)]="DATE" type="date"></ion-input>
-      <ion-label position="floating">Numero de la Vanne</ion-label>
-      <ion-input type="number" [(ngModel)]="N" placeholder=""></ion-input>
+        {{tournee_rendementdatestart}} au {{tournee_rendementdatefin}} <br>
+
+        Trance N° {{ntranche}}
+
+      
+
+
+      <ion-label position="floating">Repere Fonctionnel de la Vanne</ion-label><ion-button fill="clear"  shape="round" (click)=presentAlert0() color="dark"><ion-icon name="help-outline"></ion-icon></ion-button>
+     
+      <ion-select (ionChange)="onclick2()" placeholder="..." [(ngModel)]="N">
+        <ion-select-option   *ngFor="let vannesfoncs of vannesfonc">{{vannesfoncs}}</ion-select-option>
+      </ion-select>
+
+
+      
+      
     </ion-item>
     </h5></h4>
     <ion-row class="ion-align-items-center">
@@ -80,6 +115,11 @@
                 <ion-select-option  value="OFF">Fermé</ion-select-option>
                
               </ion-select>
+              <h5 class="ion-no-margin" > Position attendue :
+                <h5 >{{ pos}}</h5>
+                
+                </h5>
+             
               
             </h5>
           </ion-col>
@@ -101,7 +141,9 @@
                 </h5>
             </h5>
             <h5 class="ion-no-margin" > Température attendue (en aval):
+              <h5 >{{att}}</h5>
               </h5>
+         
           </ion-col>
         </ion-row>
         <ion-row>
@@ -124,29 +166,35 @@
 
 <ion-card class="list">
 
-  <ion-list class="colorlist" >
-    <ion-item class="colorlist2" *ngFor="let item of listItems">
-      <ion-thumbnail class="ion-margin-end">
-      <ion-img src="{{item.imageURL}}"></ion-img>
-      </ion-thumbnail>
-      <ion-label class="ion-text-wrap">{{ item.name }}</ion-label>
+
+
+  <ion-list [inset]="true" *ngFor="let item of listItems">
+    <ion-item  >
+    
+    <ion-label >{{ item.name }}</ion-label>
+  </ion-item>
+    <ion-item  >
       
       <ion-label>{{ item.etat }}</ion-label>
-      <ion-label>{{tournee_rendement.date_debut }} {{tournee_rendement.date_fin }}</ion-label>
+    </ion-item>
+      <ion-label></ion-label>
+      <ion-item  >
        amont:
        <ion-label>{{ item.temA }}</ion-label>
        aval:
        <ion-label>{{ item.temB }}</ion-label>
        
-      
-      
-    </ion-item>
+
+      </ion-item>
+      <ion-item></ion-item>
+
+
   </ion-list>
-</ion-card>
 
 </ion-card>
 
+</ion-card>
 
-{{temperature_relevee1.amont}}
+
 
 </ion-content>

@@ -1,5 +1,5 @@
 import { NavController} from '@ionic/angular';
-import { Component,OnInit ,ViewChild,ViewContainerRef,ComponentFactoryResolver } from '@angular/core';
+import { Component,OnInit ,ViewChild,ViewContainerRef,ComponentFactoryResolver, EnvironmentInjector } from '@angular/core';
 import { AlertController} from '@ionic/angular';
 
 
@@ -18,7 +18,7 @@ import { environment } from '../../environments/environment';
 })
 
 
-export class TabFillPage {
+export class TabFillPage implements OnInit {
   public listItems:any;
   public valve:any;
   public ETAT:any;
@@ -27,34 +27,139 @@ export class TabFillPage {
   public N:any;
   public DATE:any;
 
- 
+  public att="";
+  public description ="";
+  public nom ="";
+  public pos ="";
+  public local ="";
 
-  public  tournee_rendement  =  environment.tournee_rendement;
-  public  annexes  =  environment.annexes;
-  public  1  =  environment.annexes[1];
-  public  groupes_vannes  =  environment.annexes[1].groupes_vannes[0];
-  public  groupes_vannes1  =  environment.annexes[1].groupes_vannes[1];
-  public vannes1 = environment.annexes[1].groupes_vannes[0].vannes[0];
-  public temperature_relevee1 = environment.annexes[1].groupes_vannes[0].vannes[0].temperature_relevee;
-
-  public vannes2 = environment.annexes[1].groupes_vannes[0].vannes[1];
-  public temperature_relevee2 = environment.annexes[1].groupes_vannes[0].vannes[1].temperature_relevee;
-
-  public vannes3 = environment.annexes[1].groupes_vannes[0].vannes[2];
-  public temperature_relevee3 = environment.annexes[1].groupes_vannes[0].vannes[2].temperature_relevee;
-
-  public vannes4 = environment.annexes[1].groupes_vannes[0].vannes[3];
-  public temperature_relevee4 = environment.annexes[1].groupes_vannes[0].vannes[3].temperature_relevee;
-
-
-
+  public annexe;
+  public annexe1;
+  public tournee_rendementdatestart = environment.tournee_rendement.date_debut;
+  public tournee_rendementdatefin = environment.tournee_rendement.date_fin;
+  public ntranche = environment.tournee_rendement.tranche;
+  
  
   constructor( private alertController: AlertController,public navCtrl: NavController, resolver:ComponentFactoryResolver){
    
-    this.listItems=[{
-      date: "Date", name: "N°", etat:"Etat",temA:"...",tempB:"...", imageURL: "./assets/image_01.png" 
+    this.listItems=[{     //templates List
+      date: "Date",
+       name: "N°",
+       etat:"Etat",
+       temA:"...",
+       tempB:"...",
+       imageURL: "./assets/image_01.png" 
     }];
   }
+
+     annexesDescriptions: any[] = [];     //tableau json annexe
+    groupesVannesLocalisations: any[] = [];
+
+    vannesdes: any[] = [];    //tableau json annexe.vannes
+    vannesfonc: any[] = [];
+    vannescons:any[] = [];
+    vannesatt:any[] = [];
+
+    valeuramont: any[] = [];    //tableau json annexe.temperature
+    valeuraval: any[] = [];
+    vannepossatt: any[] = [];
+
+   
+
+  async ngOnInit(): Promise<void> 
+  {
+    
+
+    
+    for (const annexeId in environment.annexes) {
+      if (environment.annexes.hasOwnProperty(annexeId)) {
+         this.annexe = environment.annexes[annexeId];
+         
+         console.log(`niveau ${annexeId}: ${this.annexe.niveau}`);
+        this.annexesDescriptions.push(`Annexe ${annexeId}: ${this.annexe.niveau}`);
+
+        console.log(`annexe_description ${annexeId}: ${this.annexe.annexe_description}`);
+        this.annexesDescriptions.push(`Annexe ${annexeId}: ${this.annexe.annexe_description}`);
+        
+        
+        for (const groupeVannes of this.annexe.groupes_vannes) {
+          
+        
+          console.log(` localisation_groupe:  ${groupeVannes.localisation_groupe}`);
+          this.groupesVannesLocalisations.push(`Groupes de vannes: ${groupeVannes.localisation_groupe}`);
+        
+          if (Array.isArray(groupeVannes.vannes)) {
+            for (const vanne of groupeVannes.vannes) {
+              console.log(` repere_fonctionnel:  ${vanne.repere_fonctionnel}`);
+              this.vannesfonc.push(`${vanne.repere_fonctionnel}`);
+
+              console.log(`  description vanne:  ${vanne.description}`);
+              this.vannesdes.push(`${vanne.description}`);
+
+              console.log(`  position_constatee:  ${vanne.position_constatee}`);
+              this.vannescons.push(`${vanne.position_constatee}`);
+
+              console.log(`  position_attendue:  ${vanne.position_attendue}`);
+              this.vannepossatt.push(`${vanne.position_attendue}`);
+              
+              console.log(vanne.temperature_relevee.amont);
+              this.valeuramont.push(vanne.temperature_relevee.amont);
+              
+              console.log(vanne.temperature_relevee.aval);
+              this.valeuraval.push(vanne.temperature_relevee.aval);
+
+              console.log(`  position_attendue:  ${vanne.temperature_attendue}`);
+              this.vannesatt.push(`${vanne.temperature_attendue}`);
+
+            }
+          }
+        }     
+      }
+    }
+
+
+
+
+  }
+
+  async onclick2(){
+    
+
+    for (const annexeId in environment.annexes) {
+      
+      if (environment.annexes.hasOwnProperty(annexeId)) {
+        for (const groupeVannes of this.annexe.groupes_vannes) {
+
+          this.local = groupeVannes.localisation_groupe
+          if (Array.isArray(groupeVannes.vannes)) {
+            for (const vanne of groupeVannes.vannes) {
+
+              
+
+    for (let i = 0; i< 131072 ;i++){
+
+      
+      if(this.N == this.vannesfonc[i]){
+        
+        this.nom = this.vannesfonc[i]
+        this.att = this.vannesatt[i];
+        this.pos =this.vannepossatt[i];
+
+        this.description = this.vannesdes[i];
+        console.log(`  i:  ${i}`);
+
+      }
+    }
+  }
+     }
+    }
+  }
+  console.log(`  valeur att dynamic:  ${this.att}`);
+  console.log(`  description Dynamic:  ${this.description}`);
+  }
+}
+
+
 
   async onclick(){
 
@@ -63,7 +168,7 @@ export class TabFillPage {
       buttons: ['OK'],
     });
 
-    if(this.N == null && this.DATE == null && this.ETAT == null && this.TAM == null && this.TAV == null){
+    if(this.N == null || this.ETAT == null || this.TAM == null || this.TAV == null){
       console.log('is empty'); 
       await alert.present();
     }else{
@@ -79,6 +184,16 @@ export class TabFillPage {
     const alert = await this.alertController.create({
       header: "Comment connaitre l'etat de la vanne",
       message: 'bla bla bla',
+      buttons: ['OK'],
+    });
+
+    await alert.present();
+  }
+
+  async presentAlert0() {
+    const alert = await this.alertController.create({
+      header: "Description de la vanne:",
+      message: this.description,
       buttons: ['OK'],
     });
 

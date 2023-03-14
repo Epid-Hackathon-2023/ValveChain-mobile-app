@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-tab_login',
@@ -14,7 +15,11 @@ export class TabLoginPage implements OnInit {
   loginForm:FormGroup;
   isSubmitted = false;
 
-  constructor(public formBuilder:FormBuilder) {}
+  constructor(private authService: AuthService, private formBuilder:FormBuilder) {this.loginForm = this.formBuilder.group({
+    user: ['', Validators.required],
+    pass: ['', Validators.required]
+  });
+}
 
   ngOnInit() {
     this.loginForm = this.formBuilder.group({
@@ -40,7 +45,10 @@ export class TabLoginPage implements OnInit {
     else {
       console.log(this.loginForm.value)
 
-      if (this.loginForm.value.user == 'ok' && this.loginForm.value.pass == 'okOK99') {
+      const user = this.loginForm.controls.user.value;
+      const pass = this.loginForm.controls.pass.value;
+
+      if (this.authService.login(user, pass)) {
         console.log('Good password !')
       }
 

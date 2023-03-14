@@ -35,9 +35,9 @@ export class TabFillPage implements OnInit {
 
   public annexe;
   public annexe1;
-  public tournee_rendementdatestart = environment.tournee_rendement.date_debut;
-  public tournee_rendementdatefin = environment.tournee_rendement.date_fin;
-  public ntranche = environment.tournee_rendement.tranche;
+  public tournee_rendementdatestart = environment['tournee_rendement'].date_debut;
+  public tournee_rendementdatefin = environment['tournee_rendement'].date_fin;
+  public ntranche = environment['tournee_rendement'].tranche;
   
  
   constructor( private alertController: AlertController,public navCtrl: NavController, resolver:ComponentFactoryResolver){
@@ -73,9 +73,9 @@ export class TabFillPage implements OnInit {
     
 
     
-    for (const annexeId in environment.annexes) {
-      if (environment.annexes.hasOwnProperty(annexeId)) {
-         this.annexe = environment.annexes[annexeId];
+    for (const annexeId in environment['annexes']) {
+      if (environment['annexes'].hasOwnProperty(annexeId)) {
+         this.annexe = environment['annexes'][annexeId];
          
          console.log(`niveau ${annexeId}: ${this.annexe.niveau}`);
         this.annexesDescriptions.push(`Annexe ${annexeId}: ${this.annexe.niveau}`);
@@ -127,9 +127,9 @@ export class TabFillPage implements OnInit {
   async onclick2(){
     
 
-    for (const annexeId in environment.annexes) {
+    for (const annexeId in environment['annexes']) {
       
-      if (environment.annexes.hasOwnProperty(annexeId)) {
+      if (environment['annexes'].hasOwnProperty(annexeId)) {
         for (const groupeVannes of this.annexe.groupes_vannes) {
 
           this.local = groupeVannes.localisation_groupe

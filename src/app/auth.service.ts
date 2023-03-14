@@ -10,7 +10,7 @@ export class AuthService {
 
   login(user: string, pass: string): boolean {
     // Ajoutez ici la logique pour valider les informations d'identification de l'utilisateur
-    if (user === 'utilisateur' && pass === 'mdp') {
+    if (user === 'ok' && pass === 'okOK99') {
       this.isLoggedIn = true;
       return true;
     }

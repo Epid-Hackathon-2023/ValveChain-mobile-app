@@ -15,7 +15,11 @@ export class TabLoginPage implements OnInit {
   loginForm:FormGroup;
   isSubmitted = false;
 
-  constructor(private authService: AuthService, public formBuilder:FormBuilder) {}
+  constructor(private authService: AuthService, private formBuilder:FormBuilder) {this.loginForm = this.formBuilder.group({
+    user: ['', Validators.required],
+    pass: ['', Validators.required]
+  });
+}
 
   ngOnInit() {
     this.loginForm = this.formBuilder.group({
@@ -41,7 +45,10 @@ export class TabLoginPage implements OnInit {
     else {
       console.log(this.loginForm.value)
 
-      if (this.authService.login(this.user, this.pass)) {
+      const user = this.loginForm.controls.user.value;
+      const pass = this.loginForm.controls.pass.value;
+
+      if (this.authService.login(user, pass)) {
         console.log('Good password !')
       }
 

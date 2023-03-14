@@ -166,7 +166,7 @@
 
 <ion-card class="list">
 
-
+  
 
   <ion-list [inset]="true" *ngFor="let item of listItems">
     <ion-item  >
@@ -176,18 +176,25 @@
     <ion-item  >
       
       <ion-label>{{ item.etat }}</ion-label>
+      <ion-label>{{ item.pos }}</ion-label>
+      
+
     </ion-item>
       <ion-label></ion-label>
       <ion-item  >
        amont:
        <ion-label>{{ item.temA }}</ion-label>
+      </ion-item>
+       <ion-item  >
        aval:
        <ion-label>{{ item.temB }}</ion-label>
+
+       <ion-label>{{ item.att }}</ion-label>
+      
        
 
       </ion-item>
       <ion-item></ion-item>
-
 
   </ion-list>
 

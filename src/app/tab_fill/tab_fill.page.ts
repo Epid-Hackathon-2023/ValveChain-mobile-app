@@ -48,6 +48,8 @@ export class TabFillPage implements OnInit {
        etat:"Etat",
        temA:"...",
        tempB:"...",
+       pos:"position attendue",
+       att:"temperature attendue",
        imageURL: "./assets/image_01.png" 
     }];
   }
@@ -173,7 +175,7 @@ export class TabFillPage implements OnInit {
       await alert.present();
     }else{
     this.listItems.push({
-     date:this.DATE, name: this.N , etat: this.ETAT,temA:this.TAM, temB:this.TAV,imageURL: "./assets/image_01.png"
+     date:this.DATE, name: this.N , etat: this.ETAT,temA:this.TAM,pos:this.pos  ,att:this.att , temB:this.TAV,imageURL: "./assets/image_01.png"
     });
   }
   };

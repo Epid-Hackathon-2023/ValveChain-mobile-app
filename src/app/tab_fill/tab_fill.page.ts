@@ -1,5 +1,5 @@
 import { NavController} from '@ionic/angular';
-import { Component,OnInit ,ViewChild,ViewContainerRef,ComponentFactoryResolver, EnvironmentInjector } from '@angular/core';
+import { Component,OnInit ,ViewChild,ViewContainerRef, EnvironmentInjector } from '@angular/core';
 import { AlertController} from '@ionic/angular';
 
 
@@ -40,7 +40,7 @@ export class TabFillPage implements OnInit {
   public ntranche = environment['tournee_rendement'].tranche;
   
  
-  constructor( private alertController: AlertController,public navCtrl: NavController, resolver:ComponentFactoryResolver){
+  constructor( private alertController: AlertController,public navCtrl: NavController){
    
     this.listItems=[{     //templates List
       date: "Date",
@@ -48,8 +48,8 @@ export class TabFillPage implements OnInit {
        etat:"Etat",
        temA:"...",
        tempB:"...",
-       pos:"position attendue",
-       att:"temperature attendue",
+       pos:"Position attendue",
+       att:"Temperature attendue",
        imageURL: "./assets/image_01.png" 
     }];
   }
@@ -95,13 +95,13 @@ export class TabFillPage implements OnInit {
               console.log(` repere_fonctionnel:  ${vanne.repere_fonctionnel}`);
               this.vannesfonc.push(`${vanne.repere_fonctionnel}`);
 
-              console.log(`  description vanne:  ${vanne.description}`);
+              console.log(`  Description vanne:  ${vanne.description}`);
               this.vannesdes.push(`${vanne.description}`);
 
-              console.log(`  position_constatee:  ${vanne.position_constatee}`);
+              console.log(`  Position_constatee:  ${vanne.position_constatee}`);
               this.vannescons.push(`${vanne.position_constatee}`);
 
-              console.log(`  position_attendue:  ${vanne.position_attendue}`);
+              console.log(`  Position_attendue:  ${vanne.position_attendue}`);
               this.vannepossatt.push(`${vanne.position_attendue}`);
               
               console.log(vanne.temperature_relevee.amont);
@@ -110,7 +110,7 @@ export class TabFillPage implements OnInit {
               console.log(vanne.temperature_relevee.aval);
               this.valeuraval.push(vanne.temperature_relevee.aval);
 
-              console.log(`  position_attendue:  ${vanne.temperature_attendue}`);
+              console.log(`  Position_attendue:  ${vanne.temperature_attendue}`);
               this.vannesatt.push(`${vanne.temperature_attendue}`);
 
             }
@@ -156,8 +156,8 @@ export class TabFillPage implements OnInit {
      }
     }
   }
-  console.log(`  valeur att dynamic:  ${this.att}`);
-  console.log(`  description Dynamic:  ${this.description}`);
+  console.log(`  Valeur attend dynamique:  ${this.att}`);
+  console.log(`  Description dynamique:  ${this.description}`);
   }
 }
 
@@ -166,7 +166,7 @@ export class TabFillPage implements OnInit {
   async onclick(){
 
     const alert = await this.alertController.create({
-      header: "Tout les champs doivent etre remplis pour validée la vanne",
+      header: "Tous les champs doivent être remplis pour valider la vanne.",
       buttons: ['OK'],
     });
 
@@ -184,7 +184,7 @@ export class TabFillPage implements OnInit {
 
   async presentAlert() {
     const alert = await this.alertController.create({
-      header: "Comment connaitre l'etat de la vanne",
+      header: "Comment connaitre l'état de la vanne ?",
       message: 'bla bla bla',
       buttons: ['OK'],
     });
@@ -204,7 +204,7 @@ export class TabFillPage implements OnInit {
 
   async presentAlert2() {
     const alert = await this.alertController.create({
-      header: 'Comment prendre la temperature en amont:',
+      header: 'Comment prendre la température en amont ?',
       message: 'bla bla bla',
       buttons: ['OK'],
     });
@@ -213,7 +213,7 @@ export class TabFillPage implements OnInit {
 }
 async presentAlert3() {
   const alert = await this.alertController.create({
-    header: 'Comment prendre la temperature en aval:',
+    header: 'Comment prendre la température en aval:',
     message: 'bla bla bla',
     buttons: ['OK'],
   });

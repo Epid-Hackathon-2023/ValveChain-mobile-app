@@ -15,12 +15,12 @@ export class AuthService{
   pass_hash_db:string;
 
   constructor(private sqlite: SQLite, private db:DbService) {
-    this.db.getSingleUser("1").then(res => {
+    /*this.db.getSingleUser("1").then(res => {
       this.editForm.setValue({
         user_db: res['user'],
         pass_hash_db: res['pass_hash']
       })
-    });
+    });*/
   }
 
 

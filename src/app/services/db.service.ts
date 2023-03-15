@@ -1,15 +1,19 @@
 import { Injectable } from '@angular/core';
 import { Platform } from '@ionic/angular';
-import { Valvedb } from './valvedb';
+import { Usersdb, Valvedb } from './valvedb';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { SQLitePorter } from '@ionic-native/sqlite-porter/ngx';
 import { SQLite, SQLiteObject } from '@ionic-native/sqlite/ngx';
+
+
 @Injectable({
   providedIn: 'root'
 })
+
 export class DbService {
   private storage: SQLiteObject;
+  usersList = new BehaviorSubject([]);
   valvesList = new BehaviorSubject([]);
   private isDbReady: BehaviorSubject<boolean> = new BehaviorSubject(false);
   constructor(
@@ -29,28 +33,58 @@ export class DbService {
       });
     });
   }
+
+
   dbState() {
     return this.isDbReady.asObservable();
+  }
+
+
+  fetchUsers(): Observable<Usersdb[]> {
+    return this.usersList.asObservable();
   }
  
   fetchValves(): Observable<Valvedb[]> {
     return this.valvesList.asObservable();
   }
-    // Render fake data
-    getFakeData() {
-      this.httpClient.get(
-        'assets/dump.sql', 
-        {responseType: 'text'}
-      ).subscribe(data => {
-        this.sqlPorter.importSqlToDb(this.storage, data)
-          .then(_ => {
-            this.getValves();
-            this.isDbReady.next(true);
-          })
-          .catch(error => console.error(error));
-      });
-    }
-  // Get list
+
+
+  //Render fake data
+  getFakeData() {
+    this.httpClient.get(
+      'assets/dump.sql', 
+      {responseType: 'text'}
+    ).subscribe(data => {
+      this.sqlPorter.importSqlToDb(this.storage, data)
+        .then(_ => {
+          this.getValves();
+          this.isDbReady.next(true);
+        })
+        .catch(error => console.error(error));
+    });
+  }
+
+
+  //######## GET ########//
+
+  // Get users list
+  getUsers(){
+    return this.storage.executeSql('SELECT * FROM usertable', []).then(res => {
+      let items: Usersdb[] = [];
+      if (res.rows.length > 0) {
+        for (var i = 0; i < res.rows.length; i++) { 
+          items.push({ 
+            id: res.rows.item(i).id,
+            user: res.rows.item(i).user,  
+            pass_hash: res.rows.item(i).pass_hash
+           });
+        }
+      }
+      this.usersList.next(items);
+    });
+  }
+
+  // Get valves list
   getValves(){
     return this.storage.executeSql('SELECT * FROM valvetable', []).then(res => {
       let items: Valvedb[] = [];
@@ -58,7 +92,7 @@ export class DbService {
         for (var i = 0; i < res.rows.length; i++) { 
           items.push({ 
             id: res.rows.item(i).id,
-            artist_name: res.rows.item(i).artist_name,  
+            user: res.rows.item(i).user,  
             valve_name: res.rows.item(i).valve_name
            });
         }
@@ -66,33 +100,85 @@ export class DbService {
       this.valvesList.next(items);
     });
   }
-  // Add
-  addValve(artist_name, valve_name) {
-    let data = [artist_name, valve_name];
-    return this.storage.executeSql('INSERT INTO valvetable (artist_name, valve_name) VALUES (?, ?)', data)
+
+
+  //######## ADD ########//
+
+  // Add user
+  addUser(user, pass_hash) {
+    let data = [user, pass_hash];
+    return this.storage.executeSql('INSERT INTO usertable (user, pass_hash) VALUES (?, ?)', data)
+    .then(res => {
+      this.getUsers();
+    });
+  }
+
+  // Add valve
+  addValve(user, valve_name) {
+    let data = [user, valve_name];
+    return this.storage.executeSql('INSERT INTO valvetable (user, valve_name) VALUES (?, ?)', data)
     .then(res => {
       this.getValves();
     });
   }
  
+
+  //######## GET_SINGLE ########//
+
+  // Get single user
+  getSingleUser(id): Promise<Usersdb> {
+    return this.storage.executeSql('SELECT * FROM usertable WHERE id = ?', [id]).then(res => { 
+      return {
+        id: res.rows.item(0).id,
+        user: res.rows.item(0).user,  
+        pass_hash: res.rows.item(0).pass_hash
+      }
+    });
+  }
+ 
   // Get single object
-  getValve(id): Promise<Valvedb> {
+  getSingleValve(id): Promise<Valvedb> {
     return this.storage.executeSql('SELECT * FROM valvetable WHERE id = ?', [id]).then(res => { 
       return {
         id: res.rows.item(0).id,
-        artist_name: res.rows.item(0).artist_name,  
+        user: res.rows.item(0).user,  
         valve_name: res.rows.item(0).valve_name
       }
     });
   }
-  // Update
+
+
+  //######## UPDATE ########//
+
+  // Update user
+  updateUser(id, user: Usersdb) {
+    let data = [user.user, user.pass_hash];
+    return this.storage.executeSql(`UPDATE usertable SET user = ?, pass_hash = ? WHERE id = ${id}`, data)
+    .then(data => {
+      this.getUsers();
+    })
+  }
+
+  // Update valve
   updateValve(id, valve: Valvedb) {
-    let data = [valve.artist_name, valve.valve_name];
-    return this.storage.executeSql(`UPDATE valvetable SET artist_name = ?, valve_name = ? WHERE id = ${id}`, data)
+    let data = [valve.user, valve.valve_name];
+    return this.storage.executeSql(`UPDATE valvetable SET user = ?, valve_name = ? WHERE id = ${id}`, data)
     .then(data => {
       this.getValves();
     })
   }
+
+
+  //######## DELETE ########//
+
+  // Delete user
+  deleteUser(id) {
+    return this.storage.executeSql('DELETE FROM usertable WHERE id = ?', [id])
+    .then(_ => {
+      this.getUsers();
+    });
+  }
+
   // Delete
   deleteValve(id) {
     return this.storage.executeSql('DELETE FROM valvetable WHERE id = ?', [id])

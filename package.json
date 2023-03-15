@@ -27,8 +27,9 @@
     "@ionic/cordova-builders": "^7.0.0",
     "@ionic/storage": "^3.0.6",
     "bootstrap": "^5.2.3",
+    "cordova-android": "10.1.2",
     "ionicons": "^6.0.3",
-    "ng-sidebar":"^9.2.0",
+    "ng-sidebar": "^9.2.0",
     "rxjs": "~6.6.7",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"
@@ -48,6 +49,11 @@
     "@types/node": "^12.11.1",
     "@typescript-eslint/eslint-plugin": "5.3.0",
     "@typescript-eslint/parser": "5.3.0",
+    "cordova-plugin-device": "2.0.2",
+    "cordova-plugin-ionic-keyboard": "^2.0.5",
+    "cordova-plugin-ionic-webview": "^5.0.0",
+    "cordova-plugin-splashscreen": "5.0.2",
+    "cordova-plugin-statusbar": "^2.4.2",
     "eslint": "^7.6.0",
     "eslint-plugin-import": "2.22.1",
     "eslint-plugin-jsdoc": "30.7.6",
@@ -68,8 +74,16 @@
   "cordova": {
     "plugins": {
       "uk.co.workingedge.cordova.plugin.sqliteporter": {},
-      "cordova-sqlite-storage": {}
-    }
+      "cordova-sqlite-storage": {},
+      "cordova-plugin-statusbar": {},
+      "cordova-plugin-device": {},
+      "cordova-plugin-splashscreen": {},
+      "cordova-plugin-ionic-webview": {},
+      "cordova-plugin-ionic-keyboard": {}
+    },
+    "platforms": [
+      "android"
+    ]
   },
   "styles": {
     "node_modules/bootstrap/dist/css/bootstrap.min.css": {},

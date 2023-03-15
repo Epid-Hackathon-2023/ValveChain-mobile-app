@@ -8,15 +8,6 @@ const routes: Routes = [
   { path: 'tab_home', loadChildren: () => import('./tab_home/tab_home.module').then(m => m.TabHomePageModule)},
   { path: 'tab_fill', loadChildren: () => import('./tab_fill/tab_fill.module').then(m => m.TabFillPageModule)},
   { path: 'tab_settings', loadChildren: () => import('./tab_settings/tab_settings.module').then(m => m.TabSettingsPageModule)}
-  
-/*{ path: '', redirectTo: 'home', pathMatch: 'full' },
- *{ path: 'home', loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)},
- *{ path: 'valvedb/:id', loadChildren: () => import('./valvedb/valvedb.module').then( m => m.ValvedbPageModule)},
- */
-
- /* path = http://url.com/path/;
-  * loadChildren = ./path/to/a.module;
-  * then =  */
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })],

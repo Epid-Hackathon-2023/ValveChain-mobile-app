@@ -3,9 +3,10 @@
 [x] Link login to database
 [x] Redirect login when logged in
 [x] Link blockchain to app
+
+####Quentin####
 [x] Redesign everything
 [x] Deploy app on everything
 [x] Add parameter page
-[x] Create photo editor page
 [x] Send data to Guillaume
 [x] Receive data from Guillaume

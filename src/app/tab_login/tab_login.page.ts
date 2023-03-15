@@ -7,21 +7,22 @@ import { AuthService } from '../auth.service';
   templateUrl: 'tab_login.page.html',
   styleUrls: ['tab_login.page.scss']
 })
+
+
 export class TabLoginPage implements OnInit {
 
-  Name:string;
-  Password:string;
-  test:string = "Password";
   loginForm:FormGroup;
   isSubmitted = false;
 
   constructor(private authService: AuthService, private formBuilder:FormBuilder) {this.loginForm = this.formBuilder.group({
     user: ['', Validators.required],
     pass: ['', Validators.required]
-  });
-}
+    });
+  }
 
   ngOnInit() {
+
+    //Fetch-check data typed by user
     this.loginForm = this.formBuilder.group({
       user: this.formBuilder.control('', [Validators.required, Validators.minLength(2), Validators.maxLength(26)]),
       pass: this.formBuilder.control('', [Validators.required, Validators.minLength(6), Validators.pattern('^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{6,20}$')]),
@@ -33,7 +34,6 @@ export class TabLoginPage implements OnInit {
   }
 
   //Déclenche le formuaire lorsque "Connexion" appuyé
-//submitForm() {
   OnSubmit() {
     this.isSubmitted = true;
     if (!this.loginForm.valid) {
@@ -50,6 +50,7 @@ export class TabLoginPage implements OnInit {
 
       if (this.authService.login(user, pass)) {
         console.log('Good password !')
+        //this.router.navigate(['/home']);
       }
 
       else {

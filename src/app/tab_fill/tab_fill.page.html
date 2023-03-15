@@ -1,5 +1,3 @@
-
-
 <ion-header>
   <ion-toolbar color="tertiary" >
     
@@ -16,192 +14,154 @@
 </ion-header>
 
 
-  <ion-menu contentId="main-content">
+<ion-menu contentId="main-content">
 
-    <ion-content>
-<div class="menu1">
-  <div class="menu-header-bg">
-  <div class="header-content">
-   <div class="logo">
-    <ion-icon color="light" name="person-circle-outline"></ion-icon>
-    
-    <ion-label>
-      <h2></h2>
-      <p></p>
+  <ion-content>
+    <div class="menu1">
+      <div class="menu-header-bg">
+        <div class="header-content">
+          <div class="logo">
+            <ion-icon color="light" name="person-circle-outline"></ion-icon>
+            <ion-label>
+              <h2></h2>
+              <p></p>
+            </ion-label>
+          </div>
+        </div>
+      </div> 
 
-    </ion-label>
-  </div>
-</div>
-</div> 
-
-
-      <div >
+      <div>
         <ion-icon  color="light" name="settings-outline"></ion-icon>
       </div>
 
-
-
       <ion-button shape="round">Parametre</ion-button>
-
       <ion-button shape="round">Voir Vanne</ion-button>
+      
       <div class="vide">
-
       </div>
 
       <ion-button shape="round" color="danger">Retour au login</ion-button>
     </div>
-    </ion-content>
-  </ion-menu>
-  <div class="ion-page" id="main-content">
-    
-    <ion-content class="ion-padding">
-    
-    </ion-content>
-  </div>
+  </ion-content>
+</ion-menu>
+
+<div class="ion-page" id="main-content">
+  <ion-content class="ion-padding">
+  </ion-content>
+</div>
 
 
-
-
-
-  
 
 
 <ion-content>
   <div class="bg"></div>
-
-  <div class="ion-text-center ion-margin-top ion-margin-bottom">
-    
-    
-    <div class="orderSummary">
-   
+    <div class="ion-text-center ion-margin-top ion-margin-bottom">
+      <div class="orderSummary">
+      </div>
     </div>
-  </div>
 
   <ion-card class="back">
-  <ion-card class="title">
-    <h4 class="valvetitle" >Ajouter Information vanne:</h4>
-  </ion-card>
+    <ion-card class="title">
+      <h4 class="valvetitle" >Ajouter Information vanne:</h4>
+    </ion-card>
+    <ion-card class="valve">
+      <h4 class="valvetitle" >
+        <h5 class="ion-no-margin">
+          <ion-item color="ligh">
+            Date de la mesure :
+            {{tournee_rendementdatestart}} au {{tournee_rendementdatefin}} <br>
 
+            Trance N° {{ntranche}}
 
-  <ion-card class="valve">
-    <h4 class="valvetitle" ><h5 class="ion-no-margin">
-      <ion-item color="ligh">
-        Date de la mesure :
-        {{tournee_rendementdatestart}} au {{tournee_rendementdatefin}} <br>
+            <ion-label position="floating">Repere Fonctionnel de la Vanne</ion-label><ion-button fill="clear"  shape="round" (click)=presentAlert0() color="dark"><ion-icon name="help-outline"></ion-icon></ion-button>
+        
+            <ion-select (ionChange)="onclick2()" placeholder="..." [(ngModel)]="N">
+              <ion-select-option   *ngFor="let vannesfoncs of vannesfonc">{{vannesfoncs}}</ion-select-option>
+            </ion-select>
 
-        Trance N° {{ntranche}}
-
-      
-
-
-      <ion-label position="floating">Repere Fonctionnel de la Vanne</ion-label><ion-button fill="clear"  shape="round" (click)=presentAlert0() color="dark"><ion-icon name="help-outline"></ion-icon></ion-button>
-     
-      <ion-select (ionChange)="onclick2()" placeholder="..." [(ngModel)]="N">
-        <ion-select-option   *ngFor="let vannesfoncs of vannesfonc">{{vannesfoncs}}</ion-select-option>
-      </ion-select>
-
-
-      
-      
-    </ion-item>
-    </h5></h4>
-    <ion-row class="ion-align-items-center">
-      <ion-col size="8" class="ion-padding">
-        <ion-row>
-          <ion-col class="bold">
-            <h5 class="ion-no-margin">
-              État:<ion-button fill="clear" shape="round" (click)=presentAlert() color="dark"><ion-icon name="help-outline"></ion-icon></ion-button><ion-select placeholder="ON/OFF" [(ngModel)]="ETAT">
-                <ion-select-option  value="ON">Ouvert</ion-select-option>
-                <ion-select-option  value="OFF">Fermé</ion-select-option>
-               
-              </ion-select>
-              <h5 class="ion-no-margin" > Position attendue :
-                <h5 >{{ pos}}</h5>
+          </ion-item>
+        </h5>
+      </h4>
+      <ion-row class="ion-align-items-center">
+        <ion-col size="8" class="ion-padding">
+          <ion-row>
+            <ion-col class="bold">
+              <h5 class="ion-no-margin">
+                État:<ion-button fill="clear" shape="round" (click)=presentAlert() color="dark"><ion-icon name="help-outline"></ion-icon></ion-button>
                 
-                </h5>
-             
-              
-            </h5>
-          </ion-col>
-        </ion-row>
-        <ion-row>
-          <ion-col class="address-text">
-           
-          </ion-col>
-        </ion-row>
-        <ion-row>
-          <ion-col class="bold">
-            <h5 class="ion-no-margin"> Température en amont:<ion-button fill="clear" shape="round" (click)=presentAlert2() color="dark"><ion-icon name="help-outline"></ion-icon></ion-button>
-              <ion-label  position="floating"></ion-label>
-              <ion-input type="number" [(ngModel)]="TAM" placeholder="Temperature en C°"></ion-input>
+                <ion-select placeholder="ON/OFF" [(ngModel)]="ETAT">
+                  <ion-select-option  value="ON">Ouvert</ion-select-option>
+                  <ion-select-option  value="OFF">Fermé</ion-select-option>
+                </ion-select>
 
-              <h5 class="ion-no-margin"> Température en aval:<ion-button fill="clear" shape="round" (click)=presentAlert3() color="dark"><ion-icon name="help-outline"></ion-icon></ion-button>
-                <ion-label position="floating"></ion-label>
-                <ion-input type="number" [(ngModel)]="TAV" placeholder="Temperature en C°"></ion-input>
+                <h5 class="ion-no-margin" > Position attendue :
+                  <h5 >{{ pos}}</h5>
                 </h5>
-            </h5>
-            <h5 class="ion-no-margin" > Température attendue (en aval):
-              <h5 >{{att}}</h5>
+
               </h5>
-         
-          </ion-col>
-        </ion-row>
-        <ion-row>
-          <ion-col>
-          </ion-col>
-        </ion-row>
-      </ion-col >
-      <ion-col size="8">
-        <ion-button (click)=onclick() >Valider</ion-button>
-      </ion-col>
-    </ion-row>
-  </ion-card>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col class="address-text">
+            
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col class="bold">
+              <h5 class="ion-no-margin"> Température en amont:<ion-button fill="clear" shape="round" (click)=presentAlert2() color="dark"><ion-icon name="help-outline"></ion-icon></ion-button>
+                <ion-label  position="floating"></ion-label>
+                <ion-input type="number" [(ngModel)]="TAM" placeholder="Temperature en C°"></ion-input>
 
-  
+                <h5 class="ion-no-margin"> Température en aval:<ion-button fill="clear" shape="round" (click)=presentAlert3() color="dark"><ion-icon name="help-outline"></ion-icon></ion-button>
+                  <ion-label position="floating"></ion-label>
+                  <ion-input type="number" [(ngModel)]="TAV" placeholder="Temperature en C°"></ion-input>
+                </h5>
+              </h5>
+              <h5 class="ion-no-margin" > Température attendue (en aval):
+                <h5 >{{att}}</h5>
+              </h5>
+          
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+            </ion-col>
+          </ion-row>
+        </ion-col >
+        <ion-col size="8">
+          <ion-button (click)=onclick() >Valider</ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-card>
 
-<ion-card class="title">
-  <h4 class="valvetitle" >Vannes sauvegardées:</h4>
-</ion-card>
+    <ion-card class="title">
+      <h4 class="valvetitle" >Vannes sauvegardées:</h4>
+    </ion-card>
 
 
-<ion-card class="list">
+    <ion-card class="list">
 
-  
 
-  <ion-list [inset]="true" *ngFor="let item of listItems">
-    <ion-item  >
-    
-    <ion-label >{{ item.name }}</ion-label>
-  </ion-item>
-    <ion-item  >
-      
-      <ion-label>{{ item.etat }}</ion-label>
-      <ion-label>{{ item.pos }}</ion-label>
-      
-
-    </ion-item>
-      <ion-label></ion-label>
-      <ion-item  >
-       amont:
-       <ion-label>{{ item.temA }}</ion-label>
+    <ion-list [inset]="true" *ngFor="let item of listItems">
+      <ion-item>
+        <ion-label >{{ item.name }}</ion-label>
       </ion-item>
-       <ion-item  >
-       aval:
-       <ion-label>{{ item.temB }}</ion-label>
-
-       <ion-label>{{ item.att }}</ion-label>
-      
-       
-
+      <ion-item>
+        <ion-label>{{ item.etat }}</ion-label>
+        <ion-label>{{ item.pos }}</ion-label>
+      </ion-item>
+      <ion-label></ion-label>
+      <ion-item>
+        amont:
+        <ion-label>{{ item.temA }}</ion-label>
+      </ion-item>
+      <ion-item>
+        aval:
+        <ion-label>{{ item.temB }}</ion-label>
+        <ion-label>{{ item.att }}</ion-label>
       </ion-item>
       <ion-item></ion-item>
-
-  </ion-list>
-
-</ion-card>
-
-</ion-card>
-
-
-
+      </ion-list>
+    </ion-card>
+  </ion-card>
 </ion-content>

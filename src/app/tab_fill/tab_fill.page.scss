@@ -25,10 +25,6 @@ ion-select {
     border-radius: 50px
   }
 
-  .ion-margin-end{
-    background-color: #816d6d;
-  }
-
   ion-list{
     padding: auto;
     top:50%;
@@ -108,16 +104,6 @@ ion-select {
     
   }
 
-  ion-searchbar{
-    --background: #9d4f4f;
-    --color: rgb(255, 255, 255);
-    --placeholder-color: rgb(255, 255, 255);
-    --icon-color: rgb(0, 0, 0);
-    --clear-button-color: #fff;
-  
-    --border-radius: 50px;
-  }
-
   ion-menu::part(backdrop) {
     background-color: rgba(255, 0, 255, 0.5);
   }
@@ -135,18 +121,6 @@ ion-select {
   .list{
     border-radius: 15px;
     
-  }
-  .list2{
-    display: none;
-    visibility: hidden;
-  }
-  .colorlist{
-    background-color:#bd9494;
-  }
-  .colorlist2{
-    --background: #bd9494;
-    display: flex;
-    flex-direction: column;
   }
 
   

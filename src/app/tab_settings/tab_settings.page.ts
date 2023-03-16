@@ -21,13 +21,13 @@ export class TabSettingsPage {
 
  async onclick(){
     const alert = await this.alertController.create({
-      header: "Tous les champs doivent être Validé pour continuer.",
+      header: "Tous les champs doivent être validés pour continuer.",
       buttons: ['OK'],
     });
     
 
     if (this.A == true && this.B ==true && this.C ==true && this.D ==true && this.E ==true){
-      console.log(`Check Valide`);
+      console.log(`Check valid`);
       this.router.navigate(['/tab_fill']);
     }
     else{

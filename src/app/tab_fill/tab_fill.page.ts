@@ -26,6 +26,7 @@ export class TabFillPage implements OnInit {
   public TAV:any;
   public N:any;
   public DATE:any;
+  public NOTE:string;
 
   public att="";
   public description ="";
@@ -46,8 +47,9 @@ export class TabFillPage implements OnInit {
       date: "Date",
        name: "N°",
        etat:"Etat",
-       temA:"...",
-       tempB:"...",
+       temA:"",
+       tempB:"",
+       note:"",
        pos:"Position attendue",
        att:"Temperature attendue",
        imageURL: "./assets/image_01.png" 
@@ -175,7 +177,7 @@ export class TabFillPage implements OnInit {
       await alert.present();
     }else{
     this.listItems.push({
-     date:this.DATE, name: this.N , etat: this.ETAT,temA:this.TAM,pos:this.pos  ,att:this.att , temB:this.TAV,imageURL: "./assets/image_01.png"
+     date:this.DATE, name: this.N , etat: this.ETAT,temA:this.TAM,pos:this.pos  ,att:this.att , temB:this.TAV, note:this.NOTE,imageURL: "./assets/image_01.png"
     });
   }
   };
@@ -185,7 +187,7 @@ export class TabFillPage implements OnInit {
   async presentAlert() {
     const alert = await this.alertController.create({
       header: "Comment connaitre l'état de la vanne ?",
-      message: 'bla bla bla',
+      message: 'Lorem ipsum dolor sit amet.',
       buttons: ['OK'],
     });
 
@@ -205,7 +207,7 @@ export class TabFillPage implements OnInit {
   async presentAlert2() {
     const alert = await this.alertController.create({
       header: 'Comment prendre la température en amont ?',
-      message: 'bla bla bla',
+      message: 'Interdum et malesuada fames ac ante ipsum primis in faucibus.',
       buttons: ['OK'],
     });
     await alert.present();
@@ -214,48 +216,20 @@ export class TabFillPage implements OnInit {
 async presentAlert3() {
   const alert = await this.alertController.create({
     header: 'Comment prendre la température en aval:',
-    message: 'bla bla bla',
+    message: 'Curabitur nec tincidunt massa. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Mauris gravida neque vitae mollis pretium. Vestibulum iaculis ligula quis felis hendrerit condimentum. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.',
     buttons: ['OK'],
   });
   await alert.present();
 
 }
-
-
-
-async presentcal() {
+async presentAlert4() {
   const alert = await this.alertController.create({
-    header: 'Please enter your info',
+    header: 'Pourquoi prendre des notes ?',
+    message: 'Curabitur nec tincidunt massa. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Mauris gravida neque vitae mollis pretium. Vestibulum iaculis ligula quis felis hendrerit condimentum. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.',
     buttons: ['OK'],
-    inputs: [
-      {
-        type: 'number',
-        placeholder: 'Day :( ex: 01 )',
-        
-        attributes: {
-        min: 4,
-        max: 4,
-        },
-
-      },
-      {
-        type: 'number',
-        placeholder: 'Mouth :( ex: 01 )',
-        attributes: {
-        min: 4,
-        max: 4,
-        },
-      },
-      {
-        type: 'number',
-        placeholder: 'Year :( ex: 2023 )',
-        min: 4,
-        max: 4,
-      }
-    ],
   });
-
   await alert.present();
+
 }
 
 

@@ -32,9 +32,10 @@
       <div>
         <ion-icon  color="light" name="settings-outline"></ion-icon>
       </div>
+      <ion-icon color="light" name="person-circle-outline"></ion-icon>
 
       <ion-button shape="round">Parametre</ion-button>
-      <ion-button shape="round">Voir Vanne</ion-button>
+      
       
       <div class="vide">
       </div>
@@ -64,13 +65,14 @@
       <h4 class="valvetitle" >Ajouter Information vanne:</h4>
     </ion-card>
     <ion-card class="valve">
+      
       <h4 class="valvetitle" >
         <h5 class="ion-no-margin">
           <ion-item color="ligh">
             Date de la mesure :
             {{tournee_rendementdatestart}} au {{tournee_rendementdatefin}} <br>
 
-            Trance N° {{ntranche}}
+            Tranche N° {{ntranche}}
 
             <ion-label position="floating">Repere Fonctionnel de la Vanne</ion-label><ion-button fill="clear"  shape="round" (click)=presentAlert0() color="dark"><ion-icon name="help-outline"></ion-icon></ion-button>
         
@@ -81,6 +83,7 @@
           </ion-item>
         </h5>
       </h4>
+      
       <ion-row class="ion-align-items-center">
         <ion-col size="8" class="ion-padding">
           <ion-row>
@@ -88,9 +91,11 @@
               <h5 class="ion-no-margin">
                 État:<ion-button fill="clear" shape="round" (click)=presentAlert() color="dark"><ion-icon name="help-outline"></ion-icon></ion-button>
                 
-                <ion-select placeholder="ON/OFF" [(ngModel)]="ETAT">
-                  <ion-select-option  value="ON">Ouvert</ion-select-option>
-                  <ion-select-option  value="OFF">Fermé</ion-select-option>
+                <ion-select placeholder="Position constatée" [(ngModel)]="ETAT">
+                  <ion-select-option  value="OUVERTE">OUVERTE</ion-select-option>
+                  <ion-select-option  value="INTEGRE">INTEGRE</ion-select-option>
+                  <ion-select-option  value="FERMEE ">FERMEE </ion-select-option>
+                  <ion-select-option  value="S.O">S.O</ion-select-option>
                 </ion-select>
 
                 <h5 class="ion-no-margin" > Position attendue :
@@ -109,11 +114,11 @@
             <ion-col class="bold">
               <h5 class="ion-no-margin"> Température en amont:<ion-button fill="clear" shape="round" (click)=presentAlert2() color="dark"><ion-icon name="help-outline"></ion-icon></ion-button>
                 <ion-label  position="floating"></ion-label>
-                <ion-input type="number" [(ngModel)]="TAM" placeholder="Temperature en C°"></ion-input>
+                <ion-input maxlength="5" type="number" [(ngModel)]="TAM" placeholder="Temperature en C°"></ion-input>
 
                 <h5 class="ion-no-margin"> Température en aval:<ion-button fill="clear" shape="round" (click)=presentAlert3() color="dark"><ion-icon name="help-outline"></ion-icon></ion-button>
                   <ion-label position="floating"></ion-label>
-                  <ion-input type="number" [(ngModel)]="TAV" placeholder="Temperature en C°"></ion-input>
+                  <ion-input maxlength="5" type="number" [(ngModel)]="TAV" placeholder="Temperature en C°"></ion-input>
                 </h5>
               </h5>
               <h5 class="ion-no-margin" > Température attendue (en aval):
@@ -122,13 +127,21 @@
           
             </ion-col>
           </ion-row>
+          <ion-col class="bold">
+            <h5 class="ion-no-margin">Note: <ion-button fill="clear" shape="round" (click)=presentAlert4() color="dark"><ion-icon name="help-outline"></ion-icon></ion-button>
+              <ion-label  position="floating"></ion-label>
+              <ion-input maxlength="240" type="text" [(ngModel)]="NOTE" placeholder="..."></ion-input>
+
+            </h5>
+        
+          </ion-col>
           <ion-row>
             <ion-col>
             </ion-col>
           </ion-row>
         </ion-col >
         <ion-col size="8">
-          <ion-button (click)=onclick() >Valider</ion-button>
+          <ion-button shape="round" (click)=onclick() >Valider</ion-button>
         </ion-col>
       </ion-row>
     </ion-card>
@@ -151,15 +164,20 @@
       </ion-item>
       <ion-label></ion-label>
       <ion-item>
-        amont:
-        <ion-label>{{ item.temA }}</ion-label>
+        Amont:
+        <ion-label>{{ item.temA }}°C</ion-label>
       </ion-item>
       <ion-item>
-        aval:
-        <ion-label>{{ item.temB }}</ion-label>
-        <ion-label>{{ item.att }}</ion-label>
+        Aval:
+        <ion-label>{{ item.temB }}°C</ion-label>
+        <ion-label>{{ item.att }}°C</ion-label>
+      </ion-item>
+      <ion-item>
+        Commentaire:
+        <ion-label>{{ item.note }}</ion-label>
       </ion-item>
       <ion-item></ion-item>
+      
       </ion-list>
     </ion-card>
   </ion-card>

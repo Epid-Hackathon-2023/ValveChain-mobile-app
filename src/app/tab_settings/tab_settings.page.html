@@ -1,12 +1,41 @@
-<ion-header>
-  <ion-toolbar color="danger">
-    <ion-title>Paramètres</ion-title>
-  </ion-toolbar >
 
-  <ion-toolbar color="danger">
-  </ion-toolbar>
-</ion-header>
 
-<ion-content [fullscreen]="true">
+<ion-content >
  
+  <ion-card class="conntent">
+ <ion-card class="cart1">
+  <ion-item>
+    <ion-checkbox [(ngModel)]="A" slot="start"></ion-checkbox>
+    <ion-label>Thermomètre laser caméra thermique</ion-label>
+  </ion-item>
+
+  <ion-item>
+    <ion-checkbox [(ngModel)]="B"slot="start"></ion-checkbox>
+    <ion-label>Lampe de poche</ion-label>
+  </ion-item>
+
+  <ion-item>
+    <ion-checkbox [(ngModel)]="C" slot="start"></ion-checkbox>
+    <ion-label>Clé EDF 900 (Tr. 1) ou <br> clé spécifique (Tr. 2 à Tr. 6)</ion-label>
+  </ion-item>
+
+
+  <ion-item>
+    <ion-checkbox [(ngModel)]="D" slot="start"></ion-checkbox>
+    <ion-label>clé 6Fou F6 pour casemate VVP</ion-label>
+  </ion-item>
+
+  <ion-item>
+    <ion-checkbox [(ngModel)]="E" slot="start"></ion-checkbox>
+    <ion-label>Contrôler la conformité de <br> l’état de tranche à PMD</ion-label>
+  </ion-item>
+</ion-card>
+
+
+
+<ion-card>
+  <ion-button (click)=onclick() class="buttonvalid" >OK</ion-button>
+</ion-card>
+
+</ion-card>
 </ion-content>

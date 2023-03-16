@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { NavController} from '@ionic/angular';
+import { AlertController} from '@ionic/angular';
 
 @Component({
   selector: 'app-tab_settings',
@@ -7,6 +10,30 @@ import { Component } from '@angular/core';
 })
 export class TabSettingsPage {
 
-  constructor() {}
+  public A:any;
+  public B:any;
+  public C:any;
+  public D:any;
+  public E:any;
+  
+
+  constructor(private alertController: AlertController, private router: Router, public navCtrl: NavController) {}
+
+ async onclick(){
+    const alert = await this.alertController.create({
+      header: "Tous les champs doivent être Validé pour continuer.",
+      buttons: ['OK'],
+    });
+    
+
+    if (this.A == true && this.B ==true && this.C ==true && this.D ==true && this.E ==true){
+      console.log(`Check Valide`);
+      this.router.navigate(['/tab_fill']);
+    }
+    else{
+      await alert.present();
+
+    }
+  }
 
 }

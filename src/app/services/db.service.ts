@@ -30,9 +30,9 @@ export class DbService {
       .then((db: SQLiteObject) => {
         this.storage = db;
         //this.getFakeData();
-        console.log("Creating database (if not exist)")
+        console.log("[db] Creating database (if not exist)")
         db.executeSql("CREATE TABLE IF NOT EXISTS userstable(id INTEGER PRIMARY KEY AUTOINCREMENT, user TEXT, pass_hash TEXT);", [])
-        console.log("Inserting data in database")
+        console.log("[db] Inserting data in database")
         db.executeSql("INSERT or IGNORE INTO userstable(id, user, pass_hash) VALUES (1, 'Jean', 'f02368945726d5fc2a14eb576f7276c0');", [])
         db.executeSql("INSERT or IGNORE INTO userstable(id, user, pass_hash) VALUES (2, 'ok', 'c3f56b0696971c831f7a2fc925a72bd5');", [])
         .then(data => {
@@ -43,7 +43,7 @@ export class DbService {
           }
         }
       )
-      .catch(e => console.log('Error retrieving data', e));
+      .catch(e => console.log('[db] Error retrieving data', e));
   
       }).catch(e => console.log(e));
       //db.close();
@@ -66,7 +66,7 @@ export class DbService {
 
 
   //Render fake data
-  getFakeData() {
+  /*getFakeData() {
     this.httpClient.get(
       'assets/dump.sql', 
       {responseType: 'text'}
@@ -78,7 +78,7 @@ export class DbService {
         })
         .catch(error => console.error(error));
     });
-  }
+  }/**/
 
   
   //######## GET ########//

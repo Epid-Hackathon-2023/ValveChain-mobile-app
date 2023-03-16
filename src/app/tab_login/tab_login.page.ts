@@ -37,21 +37,21 @@ export class TabLoginPage implements OnInit {
   OnSubmit() {
     this.isSubmitted = true;
     if (!this.loginForm.valid) {
-      console.log('Veuillez remplire tous les champs.')
+      console.log('[tab_login] Veuillez remplire tous les champs.')
       this.isSubmitted = false;
       return false;
     }
     
     else {
-      console.log(this.loginForm.value)
+      console.log("[tab_login] " + this.loginForm.value)
 
       if (this.authService.login(this.loginForm.controls.user.value, this.loginForm.controls.pass.value)) {
-        console.log('Good password !')
+        console.log('[tab_login] Good password !')
         //this.router.navigate(['/home']);
       }
 
       else {
-        console.log('Bad password...')
+        console.log('[tab_login] Bad password...')
         this.isSubmitted = false;
       }
 

@@ -27,7 +27,7 @@ export class AuthService{
       })
     });*/
 
-    console.log("Le authService est lancé")/*
+    console.log("[auth] Le authService est lancé")/*
     this.sqlite.create({
       name: 'valve.db',
       location: 'default'
@@ -60,7 +60,7 @@ export class AuthService{
   hashPassword(data_to_hash : string, hash){
     //Hash plain password and save it
     hash =  (Md5.hashStr(data_to_hash) as string);
-    console.log("hash: " + hash);
+    console.log("[auth] hash: " + hash);
   }
 
 
@@ -72,13 +72,13 @@ export class AuthService{
 
     //Récupère les données de l'utilisateur
     this.db.getSingleUser(user).then(res => {
-      this.editForm.setValue({
+      ({
         [this.user_db]: res['user'],
         [this.pass_hash_db]: res['pass_hash'],
       })
     })
 
-    console.log("user_db: " + this.user_db + ", pass_hash_db: " + this.pass_hash_db);
+    console.log("[auth] user_db: " + this.user_db + ", pass_hash_db: " + this.pass_hash_db);
 
     if (user === this.user_db && this.pass_hash === this.pass_hash_db) {
       this.isLoggedIn = true;

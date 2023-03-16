@@ -45,10 +45,7 @@ export class TabLoginPage implements OnInit {
     else {
       console.log(this.loginForm.value)
 
-      const user = this.loginForm.controls.user.value;
-      const pass = this.loginForm.controls.pass.value;
-
-      if (this.authService.login(user, pass)) {
+      if (this.authService.login(this.loginForm.controls.user.value, this.loginForm.controls.pass.value)) {
         console.log('Good password !')
         //this.router.navigate(['/home']);
       }

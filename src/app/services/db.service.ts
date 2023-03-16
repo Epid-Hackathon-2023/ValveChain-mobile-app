@@ -69,7 +69,7 @@ export class DbService {
 
   // Get users list
   getUsers(){
-    return this.storage.executeSql('SELECT * FROM usertable', []).then(res => {
+    return this.storage.executeSql('SELECT * FROM userstable', []).then(res => {
       let items: Usersdb[] = [];
       if (res.rows.length > 0) {
         for (var i = 0; i < res.rows.length; i++) { 
@@ -107,7 +107,7 @@ export class DbService {
   // Add user
   addUser(user, pass_hash) {
     let data = [user, pass_hash];
-    return this.storage.executeSql('INSERT INTO usertable (user, pass_hash) VALUES (?, ?)', data)
+    return this.storage.executeSql('INSERT INTO userstable (user, pass_hash) VALUES (?, ?)', data)
     .then(res => {
       this.getUsers();
     });
@@ -126,11 +126,15 @@ export class DbService {
   //######## GET_SINGLE ########//
 
   // Get single user
-  getSingleUser(id): Promise<Usersdb> {
-    return this.storage.executeSql('SELECT * FROM usertable WHERE id = ?', [id]).then(res => { 
+  getSingleUser(user): Promise<Usersdb> {
+    return this.storage.executeSql('SELECT * FROM userstable WHERE user = ?', [user]).then(res => { 
+
+      /*id_out = res.rows.item(0).id,
+      user_out = res.rows.item(0).user,
+      pass_hash_out = res.rows.item(0).pass_hash*/
       return {
         id: res.rows.item(0).id,
-        user: res.rows.item(0).user,  
+        user: res.rows.item(0).user,
         pass_hash: res.rows.item(0).pass_hash
       }
     });
@@ -151,9 +155,9 @@ export class DbService {
   //######## UPDATE ########//
 
   // Update user
-  updateUser(id, user: Usersdb) {
-    let data = [user.user, user.pass_hash];
-    return this.storage.executeSql(`UPDATE usertable SET user = ?, pass_hash = ? WHERE id = ${id}`, data)
+  updateUser(user: Usersdb, pass_hash: Usersdb) {
+    let data = [user, pass_hash];
+    return this.storage.executeSql(`UPDATE userstable SET user = ?, pass_hash = ? WHERE user = ${user}`, data)
     .then(data => {
       this.getUsers();
     })
@@ -172,8 +176,8 @@ export class DbService {
   //######## DELETE ########//
 
   // Delete user
-  deleteUser(id) {
-    return this.storage.executeSql('DELETE FROM usertable WHERE id = ?', [id])
+  deleteUser(user) {
+    return this.storage.executeSql('DELETE FROM userstable WHERE user = ?', [user])
     .then(_ => {
       this.getUsers();
     });

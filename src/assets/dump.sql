@@ -1,9 +1,10 @@
-CREATE TABLE IF NOT EXISTS valveusers(
+CREATE TABLE IF NOT EXISTS userstable(
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     user TEXT, 
     pass_hash TEXT
 );
-INSERT or IGNORE INTO valveusers(id, user, pass_hash) VALUES (1, 'Jean', '2cb4b1431b84ec15d35ed83bb927e27e8967d75f4bcd9cc4b25c8d879ae23e18');
+INSERT or IGNORE INTO userstable(id, user, pass_hash) VALUES (1, 'Jean', 'f02368945726d5fc2a14eb576f7276c0');
+INSERT or IGNORE INTO userstable(id, user, pass_hash) VALUES (2, 'ok', 'c3f56b0696971c831f7a2fc925a72bd5');
 
 
 CREATE TABLE IF NOT EXISTS valvetable(

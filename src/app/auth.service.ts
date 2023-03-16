@@ -26,11 +26,8 @@ export class AuthService{
         pass_hash_db: res['pass_hash']
       })
     });*/
-  }
 
-
-  ngOnInit() {
-    
+    console.log("Le authService est lancé")/*
     this.sqlite.create({
       name: 'valve.db',
       location: 'default'
@@ -47,7 +44,7 @@ export class AuthService{
     .catch(e => console.log('Error retrieving data', e));
 
     }).catch(e => console.log(e));
-
+    */
 
     this.db.dbState().subscribe((res) => {
       if(res){
@@ -56,9 +53,6 @@ export class AuthService{
         })
       }
     });
-
-    //this.db.addUser(this.user, this.pass_hash);
-    this.db.addUser("ok","c3f56b0696971c831f7a2fc925a72bd5")
   }
 
 
@@ -79,8 +73,8 @@ export class AuthService{
     //Récupère les données de l'utilisateur
     this.db.getSingleUser(user).then(res => {
       this.editForm.setValue({
-        user_db: res,
-        pass_hash_db: res['pass_hash'],
+        [this.user_db]: res['user'],
+        [this.pass_hash_db]: res['pass_hash'],
       })
     })
 

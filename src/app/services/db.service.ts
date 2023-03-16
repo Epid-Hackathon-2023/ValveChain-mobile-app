@@ -28,9 +28,25 @@ export class DbService {
         location: 'default'
       })
       .then((db: SQLiteObject) => {
-          this.storage = db;
-          this.getFakeData();
-      });
+        this.storage = db;
+        //this.getFakeData();
+        console.log("Creating database (if not exist)")
+        db.executeSql("CREATE TABLE IF NOT EXISTS userstable(id INTEGER PRIMARY KEY AUTOINCREMENT, user TEXT, pass_hash TEXT);", [])
+        console.log("Inserting data in database")
+        db.executeSql("INSERT or IGNORE INTO userstable(id, user, pass_hash) VALUES (1, 'Jean', 'f02368945726d5fc2a14eb576f7276c0');", [])
+        db.executeSql("INSERT or IGNORE INTO userstable(id, user, pass_hash) VALUES (2, 'ok', 'c3f56b0696971c831f7a2fc925a72bd5');", [])
+        .then(data => {
+          if (data.rows.length > 0) {
+            for (let i = 0; i < data.rows.length; i++) {
+              console.log(data.rows.item(i).name);
+            }
+          }
+        }
+      )
+      .catch(e => console.log('Error retrieving data', e));
+  
+      }).catch(e => console.log(e));
+      //db.close();
     });
   }
 
@@ -64,7 +80,7 @@ export class DbService {
     });
   }
 
-
+  
   //######## GET ########//
 
   // Get users list

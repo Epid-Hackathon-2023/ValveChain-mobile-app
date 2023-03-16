@@ -35,9 +35,9 @@ export class TabFillPage implements OnInit {
 
   public annexe;
   public annexe1;
-  public tournee_rendementdatestart = environment['tournee_rendement'].date_debut;
-  public tournee_rendementdatefin = environment['tournee_rendement'].date_fin;
-  public ntranche = environment['tournee_rendement'].tranche;
+  public tournee_rendementdatestart = environment['tournee_rendement'];
+  public tournee_rendementdatefin = environment['tournee_rendement'];
+  public ntranche = environment['tournee_rendement'];
   
  
   constructor( private alertController: AlertController,public navCtrl: NavController){

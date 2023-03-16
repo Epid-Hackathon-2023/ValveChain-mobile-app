@@ -1,12 +1,12 @@
 ####Esteban####
 [x] Redirect from home to login if not logged
-[x] Link login to database
-[x] Redirect login when logged in
-[x] Link blockchain to app
+[o] Link login to database
+[o] Redirect login when logged in
 
 ####Quentin####
-[x] Redesign everything
-[x] Deploy app on everything
-[x] Add parameter page
+[o] Add parameter page
+
+####Miscellaneous####
 [x] Send data to Guillaume
 [x] Receive data from Guillaume
+[x] Link blockchain to app

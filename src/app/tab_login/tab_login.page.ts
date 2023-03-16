@@ -43,17 +43,17 @@ export class TabLoginPage implements OnInit {
     }
     
     else {
-      console.log("[tab_login] " + this.loginForm.value)
+      console.log(this.loginForm.value)
 
-      if (this.authService.login(this.loginForm.controls.user.value, this.loginForm.controls.pass.value)) {
-        console.log('[tab_login] Good password !')
+      this.authService.login(this.loginForm.controls.user.value, this.loginForm.controls.pass.value)
+        //console.log('[tab_login] Good password !')
         //this.router.navigate(['/home']);
-      }
+      //}
 
-      else {
-        console.log('[tab_login] Bad password...')
-        this.isSubmitted = false;
-      }
+      //else {
+        //console.log('[tab_login] Bad password...')
+        //this.isSubmitted = false;
+      //}
 
       return true;
     }

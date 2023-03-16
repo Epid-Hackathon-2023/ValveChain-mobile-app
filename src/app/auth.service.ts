@@ -57,39 +57,42 @@ export class AuthService{
 
 
   //######## HASH STRING MD5 ########//
-  hashPassword(data_to_hash : string, hash){
+  hashPassword(data_to_hash : string, hash : string){
     //Hash plain password and save it
     hash =  (Md5.hashStr(data_to_hash) as string);
     console.log("[auth] hash: " + hash);
+    return hash;
   }
 
 
   //######## LOGIN REQUEST ########//
-  login(user: string, pass_hash: string): boolean {
+  login(user: string, pass: string): Promise<boolean> {
 
     //Hash le password
-    this.hashPassword(pass_hash, this.pass_hash)
+    this.pass_hash = this.hashPassword(pass, this.pass_hash)
 
     //Récupère les données de l'utilisateur
-    this.db.getSingleUser(user).then(res => {
-      ({
-        [this.user_db]: res['user'],
-        [this.pass_hash_db]: res['pass_hash'],
-      })
+    return this.db.getSingleUser(user).then(res => {
+      console.log(res);
+      
+      this.user_db = res['user'],
+      this.pass_hash_db = res['pass_hash']
+
+      console.log("[auth] user_db: " + this.user_db + ", pass_hash_db: " + this.pass_hash_db);
+      console.log("[auth] user: " + user + ", pass_hash: " + this.pass_hash);
+
+      if (user === this.user_db && this.pass_hash === this.pass_hash_db) {
+        console.log('[auth] Good password !')
+        this.isLoggedIn = true;
+        this.router.navigate(['/tab_home']);
+        return true;
+      }
+      else{
+        console.log('[auth] Bad password...')
+        //this.router.navigate(['/tab_settings']);
+        return false;
+      }
     })
-
-    console.log("[auth] user_db: " + this.user_db + ", pass_hash_db: " + this.pass_hash_db);
-
-    if (user === this.user_db && this.pass_hash === this.pass_hash_db) {
-      this.isLoggedIn = true;
-      this.router.navigate(['/tab_home']);
-      return true;
-    }
-    else{
-    this.router.navigate(['/tab_settings']);
-
-    return false;
-    }
   }
 
 

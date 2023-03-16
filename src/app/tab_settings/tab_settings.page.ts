@@ -28,7 +28,7 @@ export class TabSettingsPage {
 
     if (this.A == true && this.B ==true && this.C ==true && this.D ==true && this.E ==true){
       console.log(`[tab_settings] Check valid`);
-      this.router.navigate(['/pictures']);
+      this.router.navigate(['/tab_fill']);
     }
     else{
       await alert.present();

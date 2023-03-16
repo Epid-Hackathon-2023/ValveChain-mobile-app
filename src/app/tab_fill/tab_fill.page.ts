@@ -1,10 +1,9 @@
 import { NavController} from '@ionic/angular';
 import { Component,OnInit ,ViewChild,ViewContainerRef, EnvironmentInjector } from '@angular/core';
 import { AlertController} from '@ionic/angular';
-import { Camera, CameraResultType } from '@capacitor/camera';
-
-
+import { Camera, CameraResultType, CameraSource, Photo } from '@capacitor/camera';
 import { environment } from '../../environments/environment';
+
 
 
 const takePicture = async () => {
@@ -83,7 +82,7 @@ export class TabFillPage implements OnInit {
     }];
   }
 
-     annexesDescriptions: any[] = [];     //tableau json annexe
+    annexesDescriptions: any[] = [];     //tableau json annexe
     groupesVannesLocalisations: any[] = [];
 
     vannesdes: any[] = [];    //tableau json annexe.vannes
@@ -106,10 +105,10 @@ export class TabFillPage implements OnInit {
       if (environment['annexes'].hasOwnProperty(annexeId)) {
          this.annexe = environment['annexes'][annexeId];
          
-         console.log(`niveau ${annexeId}: ${this.annexe.niveau}`);
+         console.log(`[tab_fill] niveau ${annexeId}: ${this.annexe.niveau}`);
         this.annexesDescriptions.push(`Annexe ${annexeId}: ${this.annexe.niveau}`);
 
-        console.log(`annexe_description ${annexeId}: ${this.annexe.annexe_description}`);
+        console.log(`[tab_fill] annexe_description ${annexeId}: ${this.annexe.annexe_description}`);
         this.annexesDescriptions.push(`Annexe ${annexeId}: ${this.annexe.annexe_description}`);
         
         
@@ -121,16 +120,16 @@ export class TabFillPage implements OnInit {
         
           if (Array.isArray(groupeVannes.vannes)) {
             for (const vanne of groupeVannes.vannes) {
-              console.log(` repere_fonctionnel:  ${vanne.repere_fonctionnel}`);
+              console.log(`[tab_fill] Repère fonctionnel:  ${vanne.repere_fonctionnel}`);
               this.vannesfonc.push(`${vanne.repere_fonctionnel}`);
 
-              console.log(`  Description vanne:  ${vanne.description}`);
+              console.log(`[tab_fill] Description vanne:  ${vanne.description}`);
               this.vannesdes.push(`${vanne.description}`);
 
-              console.log(`  Position_constatee:  ${vanne.position_constatee}`);
+              console.log(`[tab_fill] Position_constatee:  ${vanne.position_constatee}`);
               this.vannescons.push(`${vanne.position_constatee}`);
 
-              console.log(`  Position_attendue:  ${vanne.position_attendue}`);
+              console.log(`[tab_fill] Position_attendue:  ${vanne.position_attendue}`);
               this.vannepossatt.push(`${vanne.position_attendue}`);
               
               console.log(vanne.temperature_relevee.amont);
@@ -139,7 +138,7 @@ export class TabFillPage implements OnInit {
               console.log(vanne.temperature_relevee.aval);
               this.valeuraval.push(vanne.temperature_relevee.aval);
 
-              console.log(`  Position_attendue:  ${vanne.temperature_attendue}`);
+              console.log(`[tab_fill] Position_attendue:  ${vanne.temperature_attendue}`);
               this.vannesatt.push(`${vanne.temperature_attendue}`);
 
             }
@@ -147,11 +146,10 @@ export class TabFillPage implements OnInit {
         }     
       }
     }
-
-
-
-
   }
+
+
+  options: any[] = []
 
   async onclick2(){
     
@@ -171,13 +169,12 @@ export class TabFillPage implements OnInit {
 
       
       if(this.N == this.vannesfonc[i]){
-        
         this.nom = this.vannesfonc[i]
         this.att = this.vannesatt[i];
         this.pos =this.vannepossatt[i];
-
         this.description = this.vannesdes[i];
-        console.log(`  i:  ${i}`);
+
+        console.log(`i: ${i}`);
 
       }
     }
@@ -185,8 +182,8 @@ export class TabFillPage implements OnInit {
      }
     }
   }
-  console.log(`  Valeur attend dynamique:  ${this.att}`);
-  console.log(`  Description dynamique:  ${this.description}`);
+  console.log(`[tab_fill] Valeur attend dynamique:  ${this.att}`);
+  console.log(`[tab_fill] Description dynamique:  ${this.description}`);
   }
 }
 
@@ -200,7 +197,7 @@ export class TabFillPage implements OnInit {
     });
 
     if(this.N == null || this.ETAT == null || this.TAM == null || this.TAV == null){
-      console.log('is empty'); 
+      console.log('[tab_fill] is empty'); 
       await alert.present();
     }else{
     this.listItems.push({

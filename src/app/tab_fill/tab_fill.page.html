@@ -69,16 +69,18 @@
       <h4 class="valvetitle" >
         <h5 class="ion-no-margin">
           <ion-item color="ligh">
-            Date de la mesure :
+            Date de la mesure:
             {{tournee_rendementdatestart}} au {{tournee_rendementdatefin}} <br>
 
             Tranche N° {{ntranche}}
 
-            <ion-label position="floating">Repere Fonctionnel de la Vanne</ion-label><ion-button fill="clear"  shape="round" (click)=presentAlert0() color="dark"><ion-icon name="help-outline"></ion-icon></ion-button>
+            <ion-label position="floating">Repère fonctionnel de la vanne</ion-label><ion-button fill="clear"  shape="round" (click)=presentAlert0() color="dark"><ion-icon name="help-outline"></ion-icon></ion-button>
         
-            <ion-select (ionChange)="onclick2()" placeholder="..." [(ngModel)]="N">
-              <ion-select-option   *ngFor="let vannesfoncs of vannesfonc">{{vannesfoncs}}</ion-select-option>
-            </ion-select>
+            <ion-select placeholder="..." [(ngModel)]="N" (ngModelChange)="onclick2()">
+              <ion-select-option *ngFor="let vannesfoncs of vannesfonc">
+                {{vannesfonc}}
+              </ion-select-option>
+            </ion-select>      
 
           </ion-item>
         </h5>

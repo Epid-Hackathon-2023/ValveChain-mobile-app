@@ -13,7 +13,7 @@ export const environment = {
         annexe_description: "Réaliser les relevés au niveau + 0.00 m",
         groupes_vannes: [
           {
-            localisation_groupe: "entre les pompes CVI 001 à 004 PO et le condenseur. (M2C17)",
+            localisation_groupe: "Entre les pompes CVI 001 à 004 PO et le condenseur. (M2C17)",
             vannes: [
               {
                 repere_fonctionnel: "ABP 116 VL",
@@ -62,7 +62,7 @@ export const environment = {
             ]
           },
           {
-            localisation_groupe: "refroidisseurs de purge ABP 001-002 RP. (M2 G17)"
+            localisation_groupe: "Refroidisseurs de purge ABP 001-002 RP. (M2 G17)"
           }
         ]
       },

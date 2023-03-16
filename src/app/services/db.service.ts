@@ -30,7 +30,7 @@ export class DbService {
       .then((db: SQLiteObject) => {
         this.storage = db;
         //this.getFakeData();
-        console.log("[db] Creating database (if not exist)")
+        console.log("[db] Creating database (if non exist)")
         db.executeSql("CREATE TABLE IF NOT EXISTS userstable(id INTEGER PRIMARY KEY AUTOINCREMENT, user TEXT, pass_hash TEXT);", [])
         console.log("[db] Inserting data in database")
         db.executeSql("INSERT or IGNORE INTO userstable(id, user, pass_hash) VALUES (1, 'Jean', 'f02368945726d5fc2a14eb576f7276c0');", [])

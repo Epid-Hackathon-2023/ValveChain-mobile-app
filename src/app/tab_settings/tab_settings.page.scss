@@ -3,7 +3,6 @@ ion-card-header.ios {
     flex-flow: column-reverse;
   }
 
-
 .buttonvalid{
   left: 50%;
 }
@@ -12,4 +11,10 @@ ion-card-header.ios {
   top:35%;
   display: flex;
   flex-direction: column;
+}
+
+.title{
+  background-color: #ffffffc2;
+  padding: auto;
+  border-radius: 50px
 }

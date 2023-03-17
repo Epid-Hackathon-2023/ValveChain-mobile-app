@@ -46,14 +46,7 @@ export class TabLoginPage implements OnInit {
       console.log(this.loginForm.value)
 
       this.authService.login(this.loginForm.controls.user.value, this.loginForm.controls.pass.value)
-        //console.log('[tab_login] Good password !')
-        //this.router.navigate(['/home']);
-      //}
-
-      //else {
-        //console.log('[tab_login] Bad password...')
-        //this.isSubmitted = false;
-      //}
+      this.isSubmitted = false;
 
       return true;
     }

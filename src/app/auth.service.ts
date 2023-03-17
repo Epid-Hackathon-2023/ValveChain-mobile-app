@@ -4,6 +4,7 @@ import { SQLite, SQLiteObject } from '@ionic-native/sqlite/ngx';
 import { DbService } from './services/db.service';
 import { Router } from "@angular/router";
 import { Md5 } from 'ts-md5/dist/md5';
+import { TabLoginPage } from './tab_login/tab_login.page';
 
 @Injectable({
   providedIn: 'root'
@@ -13,38 +14,15 @@ export class AuthService{
 
   editForm: FormGroup;
   LoginData: any[] = []
-  private isLoggedIn: boolean = false;
+  private amilogged = false;
   user:string;
   user_db:string;
   pass_hash:string;
   pass_hash_db:string;
 
   constructor(private sqlite: SQLite, private db:DbService, private router: Router) {
-    /*this.db.getSingleUser("1").then(res => {
-      this.editForm.setValue({
-        user_db: res['user'],
-        pass_hash_db: res['pass_hash']
-      })
-    });*/
 
-    console.log("[auth] Le authService est lancé")/*
-    this.sqlite.create({
-      name: 'valve.db',
-      location: 'default'
-    }).then((db: SQLiteObject) => {
-
-      db.executeSql('SELECT * FROM users', [])
-        .then(data => {
-          if (data.rows.length > 0) {
-            for (let i = 0; i < data.rows.length; i++) {
-              console.log(data.rows.item(i).name);
-            }
-          }
-        })
-    .catch(e => console.log('Error retrieving data', e));
-
-    }).catch(e => console.log(e));
-    */
+    console.log("[auth] Le authService est lancé")
 
     this.db.dbState().subscribe((res) => {
       if(res){
@@ -54,7 +32,6 @@ export class AuthService{
       }
     });
   }
-
 
   //######## HASH STRING MD5 ########//
   hashPassword(data_to_hash : string, hash : string){
@@ -83,13 +60,13 @@ export class AuthService{
 
       if (user === this.user_db && this.pass_hash === this.pass_hash_db) {
         console.log('[auth] Good password !')
-        this.isLoggedIn = true;
-        this.router.navigate(['/tab_home']);
+        this.amilogged = true;
+        this.router.navigate(['/tab_fill']);
         return true;
       }
       else{
         console.log('[auth] Bad password...')
-        //this.router.navigate(['/tab_settings']);
+        //TabLoginPage ['isSubmitted'] = false;
         return false;
       }
     })
@@ -98,12 +75,12 @@ export class AuthService{
 
   //######## LOGOUT REQUEST ########//
   logout(): void {
-    this.isLoggedIn = false;
+    this.amilogged = false;
   }
 
 
   //######## IF LOGGED ########//
-  isLoggedIn_(): boolean {
-    return this.isLoggedIn;
+  isLoggedIn(): boolean {
+    return this.amilogged;
   }
 }

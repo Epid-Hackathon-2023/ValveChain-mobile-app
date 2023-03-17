@@ -1,5 +1,5 @@
 ####Esteban####
-[x] Redirect from home to login if not logged
+[o] Redirect from home to login if not logged
 [o] Link login to database
 [o] Redirect login when logged in
 

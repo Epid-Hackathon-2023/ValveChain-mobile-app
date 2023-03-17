@@ -35,6 +35,8 @@
       <ion-icon color="light" name="person-circle-outline"></ion-icon>
 
       <ion-button shape="round">Paramètre</ion-button>
+
+     
       
       
       <div class="vide">
@@ -77,7 +79,7 @@
             <ion-label position="floating">Repère fonctionnel de la vanne</ion-label><ion-button fill="clear"  shape="round" (click)=presentAlert0() color="dark"><ion-icon name="help-outline"></ion-icon></ion-button>
         
             <ion-select (ionChange)="onclick2()" placeholder="..." [(ngModel)]="N">
-              <ion-select-option   *ngFor="let vannesfoncs of vannesfonc">{{vannesfoncs}}</ion-select-option>
+              <ion-select-option *ngFor="let vannesfoncs of vannesfonc">{{vannesfoncs}}</ion-select-option>
             </ion-select>
 
           </ion-item>
@@ -133,7 +135,7 @@
               <ion-input maxlength="240" type="text" [(ngModel)]="NOTE" placeholder="..."></ion-input>
 
             </h5>
-            <ion-button   [(ngModel)]="PHOTO" shape="round" (click)=Takepicture()><ion-icon name="camera-outline"></ion-icon></ion-button>
+            <ion-button [(ngModel)]="PHOTO" shape="round" (click)=Takepicture()><ion-icon name="camera-outline"></ion-icon></ion-button>
         
           </ion-col>
           <ion-row>
@@ -148,7 +150,7 @@
     </ion-card>
 
     <ion-card class="title">
-      <h4 class="valvetitle" >Vannes sauvegardées:</h4>
+      <h4 class="valvetitle" >Vannes sauvegardées:  <ion-button shape="round">Envoie des données</ion-button></h4>
     </ion-card>
 
 

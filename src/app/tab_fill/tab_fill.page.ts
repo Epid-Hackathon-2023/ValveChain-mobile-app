@@ -52,9 +52,9 @@ export class TabFillPage implements OnInit {
 
   public annexe;
   public annexe1;
-  public tournee_rendementdatestart = environment['tournee_rendement']; //.date_debut;  à fixer, titres "objet" sans ça
-  public tournee_rendementdatefin = environment['tournee_rendement']; //.date_fin;
-  public ntranche = environment['tournee_rendement']; //.tranche;
+  public tournee_rendementdatestart = environment['tournee_rendement'].date_debut;  
+  public tournee_rendementdatefin = environment['tournee_rendement']['date_fin'];
+  public ntranche = environment['tournee_rendement'].tranche;
   
   imageURL = null;
 
@@ -254,7 +254,7 @@ async presentAlert3() {
 }
 async presentAlert4() {
   const alert = await this.alertController.create({
-    header: 'Pourquoi prendre des notes ?',
+    header: 'Anciennes Notes',
     message: 'Curabitur nec tincidunt massa. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Mauris gravida neque vitae mollis pretium. Vestibulum iaculis ligula quis felis hendrerit condimentum. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.',
     buttons: ['OK'],
   });

@@ -34,13 +34,13 @@
       </div>
       <ion-icon color="light" name="person-circle-outline"></ion-icon>
 
-      <ion-button tab="tab_settings" shape="round">Paramètres</ion-button>
+      <ion-button shape="round">Paramètre</ion-button>
       
       
       <div class="vide">
       </div>
 
-      <ion-button (click)="logout()" tab="tab_login" shape="round" color="danger">Déconnexion</ion-button>
+      <ion-button (click)="logout()" shape="round" color="danger">Déconnexion</ion-button>
     </div>
   </ion-content>
 </ion-menu>
@@ -76,11 +76,9 @@
 
             <ion-label position="floating">Repère fonctionnel de la vanne</ion-label><ion-button fill="clear"  shape="round" (click)=presentAlert0() color="dark"><ion-icon name="help-outline"></ion-icon></ion-button>
         
-            <ion-select placeholder="..." [(ngModel)]="N" (ionChange)="onclick2()">
-              <ion-select-option *ngFor="let vannesfoncs of vannesfonc">
-                {{vannesfoncs}}
-              </ion-select-option>
-            </ion-select>      
+            <ion-select (ionChange)="onclick2()" placeholder="..." [(ngModel)]="N">
+              <ion-select-option   *ngFor="let vannesfoncs of vannesfonc">{{vannesfoncs}}</ion-select-option>
+            </ion-select>
 
           </ion-item>
         </h5>
@@ -148,7 +146,6 @@
         </ion-col>
       </ion-row>
     </ion-card>
-   
 
     <ion-card class="title">
       <h4 class="valvetitle" >Vannes sauvegardées:</h4>
@@ -187,6 +184,5 @@
       
       </ion-list>
     </ion-card>
-    
   </ion-card>
 </ion-content>

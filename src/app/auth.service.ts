@@ -61,7 +61,7 @@ export class AuthService{
       if (user === this.user_db && this.pass_hash === this.pass_hash_db) {
         console.log('[auth] Good password !')
         this.amilogged = true;
-        this.router.navigate(['/tab_fill']);
+        this.router.navigate(['/tab_settings']);
         return true;
       }
       else{

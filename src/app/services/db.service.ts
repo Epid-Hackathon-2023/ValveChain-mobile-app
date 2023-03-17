@@ -33,8 +33,10 @@ export class DbService {
         console.log("[db] Creating database (if non exist)")
         db.executeSql("CREATE TABLE IF NOT EXISTS userstable(id INTEGER PRIMARY KEY AUTOINCREMENT, user TEXT, pass_hash TEXT);", [])
         console.log("[db] Inserting data in database")
-        db.executeSql("INSERT or IGNORE INTO userstable(id, user, pass_hash) VALUES (1, 'Jean', 'f02368945726d5fc2a14eb576f7276c0');", [])
-        db.executeSql("INSERT or IGNORE INTO userstable(id, user, pass_hash) VALUES (2, 'ok', 'c3f56b0696971c831f7a2fc925a72bd5');", [])
+        db.executeSql("INSERT or IGNORE INTO userstable(id, user, pass_hash) VALUES (1, 'Jean', 'f02368945726d5fc2a14eb576f7276c0');", [])  //bonjour
+        db.executeSql("INSERT or IGNORE INTO userstable(id, user, pass_hash) VALUES (2, 'ok', 'c3f56b0696971c831f7a2fc925a72bd5');", [])  //okOK99
+        db.executeSql("INSERT or IGNORE INTO userstable(id, user, pass_hash) VALUES (3, 'test', '751cb3f4aa17c36186f4856c8982bf27');", [])  //Admin1234
+        db.executeSql("INSERT or IGNORE INTO userstable(id, user, pass_hash) VALUES (4, 'chuiconnecte', '72e3359eadb9011e544d0945167ab31d');", [])  //T0ut4fait
         .then(data => {
           if (data.rows.length > 0) {
             for (let i = 0; i < data.rows.length; i++) {

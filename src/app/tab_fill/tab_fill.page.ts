@@ -41,6 +41,8 @@ export class TabFillPage implements OnInit {
   public N:any;
   public DATE:any;
   public NOTE:string;
+  public PHOTO:any;
+  
 
   public att="";
   public description ="";
@@ -79,7 +81,7 @@ export class TabFillPage implements OnInit {
        note:"",
        pos:"Position attendue",
        att:"Temperature attendue",
-       imageURL: "./assets/image_01.png" 
+       imageuURL: "" 
     }];
   }
 
@@ -109,10 +111,10 @@ export class TabFillPage implements OnInit {
       if (environment['annexes'].hasOwnProperty(annexeId)) {
          this.annexe = environment['annexes'][annexeId];
          
-         console.log(`[tab_fill] niveau ${annexeId}: ${this.annexe.niveau}`);
+         console.log(`niveau ${annexeId}: ${this.annexe.niveau}`);
         this.annexesDescriptions.push(`Annexe ${annexeId}: ${this.annexe.niveau}`);
 
-        console.log(`[tab_fill] annexe_description ${annexeId}: ${this.annexe.annexe_description}`);
+        console.log(`annexe_description ${annexeId}: ${this.annexe.annexe_description}`);
         this.annexesDescriptions.push(`Annexe ${annexeId}: ${this.annexe.annexe_description}`);
         
         
@@ -205,7 +207,7 @@ export class TabFillPage implements OnInit {
       await alert.present();
     }else{
     this.listItems.push({
-     date:this.DATE, name: this.N , etat: this.ETAT,temA:this.TAM,pos:this.pos  ,att:this.att , temB:this.TAV, note:this.NOTE,imageURL: "./assets/image_01.png"
+     date:this.DATE, name: this.N , etat: this.ETAT,temA:this.TAM,pos:this.pos  ,att:this.att , temB:this.TAV, note:this.NOTE,imageuURL: this.imageURL
     });
   }
   };

@@ -76,7 +76,7 @@
 
             <ion-label position="floating">Repère fonctionnel de la vanne</ion-label><ion-button fill="clear"  shape="round" (click)=presentAlert0() color="dark"><ion-icon name="help-outline"></ion-icon></ion-button>
         
-            <ion-select placeholder="..." [(ngModel)]="N" (ngModelChange)="onclick2()">
+            <ion-select placeholder="..." [(ngModel)]="N" (ionChange)="onclick2()">
               <ion-select-option *ngFor="let vannesfoncs of vannesfonc">
                 {{vannesfoncs}}
               </ion-select-option>
@@ -135,7 +135,7 @@
               <ion-input maxlength="240" type="text" [(ngModel)]="NOTE" placeholder="..."></ion-input>
 
             </h5>
-            <ion-button  shape="round" (click)=Takepicture()>Prendre une photo</ion-button>
+            <ion-button  [(ngModel)]="PHOTO" shape="round" (click)=Takepicture()>Prendre une photo</ion-button>
         
           </ion-col>
           <ion-row>
@@ -148,6 +148,7 @@
         </ion-col>
       </ion-row>
     </ion-card>
+   
 
     <ion-card class="title">
       <h4 class="valvetitle" >Vannes sauvegardées:</h4>
@@ -160,6 +161,9 @@
     <ion-list [inset]="true" *ngFor="let item of listItems">
       <ion-item>
         <ion-label >{{ item.name }}</ion-label>
+
+        <ion-img [ngStyle]="{'max-width': '80px', 'max-height': '80px'}" [src]="item.imageuURL"></ion-img>
+       
       </ion-item>
       <ion-item>
         <ion-label>{{ item.etat }}</ion-label>
@@ -183,5 +187,6 @@
       
       </ion-list>
     </ion-card>
+    
   </ion-card>
 </ion-content>

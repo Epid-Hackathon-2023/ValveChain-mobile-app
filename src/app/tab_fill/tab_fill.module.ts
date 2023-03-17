@@ -6,6 +6,7 @@ import { TabFillPage } from './tab_fill.page';
 import { ExploreContainerComponentModule } from '../explore-container/explore-container.module';
 //import {SidebarModule} from "ng-sidebar";
 import { TabFillPageRoutingModule } from './tab_fill-routing.module';
+import { AuthGuard } from '../auth.guard';
 
 @NgModule({
   imports: [
@@ -14,9 +15,17 @@ import { TabFillPageRoutingModule } from './tab_fill-routing.module';
     FormsModule,
     ExploreContainerComponentModule,
     TabFillPageRoutingModule,
-    
+    //BrowserModule,
+    //AppRoutingModule
   ],
-  declarations: [TabFillPage]
+  providers: [],
+  bootstrap: [AuthGuard],
+  declarations: [
+    TabFillPage
+    //AuthGuard
+    //HomeComponent,
+    //LoginComponent
+  ]
 })
 export class TabFillPageModule {
 

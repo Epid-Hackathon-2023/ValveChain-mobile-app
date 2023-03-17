@@ -1,8 +1,9 @@
-import { NavController} from '@ionic/angular';
-import { Component,OnInit ,ViewChild,ViewContainerRef, EnvironmentInjector } from '@angular/core';
-import { AlertController} from '@ionic/angular';
+import { NavController, AlertController} from '@ionic/angular';
+import { Component, OnInit, ViewChild, ViewContainerRef, EnvironmentInjector } from '@angular/core';
 import { Camera, CameraResultType, CameraSource, Photo } from '@capacitor/camera';
 import { environment } from '../../environments/environment';
+import { AuthService } from '../auth.service';
+import { Router } from '@angular/router';
 
 
 
@@ -67,7 +68,7 @@ export class TabFillPage implements OnInit {
 
   }
  
-  constructor( private alertController: AlertController,public navCtrl: NavController){
+  constructor( private alertController: AlertController, public navCtrl: NavController, private authService: AuthService, private router: Router){
    
     this.listItems=[{     //templates List
       date: "Date",
@@ -94,7 +95,10 @@ export class TabFillPage implements OnInit {
     valeuraval: any[] = [];
     vannepossatt: any[] = [];
 
-   
+    logout(): void {
+      this.authService.logout();
+      this.router.navigate(['/login']);
+    }
 
   async ngOnInit(): Promise<void> 
   {
